@@ -1,30 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Homepage</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="styles/main.css">
-    </head>
 
-    <body>
-        <header>
-            <ul class="navMenu">
-                <li><img src="images/logo.jpg" alt="logo" width=“100” height=50></li>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="">Friends</a></li>
-                <li><a href="">Messages</a></li>
-                <li><a href="">My profile</a></li>
-                <li><a href="">Settings</a></li>
-                <li><a href="">Support</a></li>
-                <li><a href="signin.html">Signout</a></li>
-            </ul>
-            <h1>Welcome to your homepage.</h1>
-        </header>
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
 
-    </body>
+<body>
+    <header>
+        <!-- Navigation menu -->
+        <ul class="navMenu">
+            <li><img src="images/logo.jpg" alt="logo" width=“100” height="50"></li>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="">Friends</a></li>
+            <li><a href="">Messages</a></li>
+            <li><a href="">My profile</a></li>
+            <li><a href="">Settings</a></li>
+            <li><a href="">Support</a></li>
+            <li><a href="signin.html">Signout</a></li>
+        </ul>
+        <h1>Welcome to your homepage.</h1>
+    </header>
 
-    <footer>
+    <!-- Create a post -->
+    <article class="container">
+        <form>
+            <fieldset class="border">
+                <legend class="w-auto">Create a post</legend>
+                <input type="text" id="txtPost" name="txtPost" required class="form-control"
+                    placeholder="What's on your mind?">
+            </fieldset>
+            <p>
+                <button type="submit" class="btn btn-primary">Post</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </p>
+        </form>
+    </article>
 
-    </footer>
+    <!-- Recent posts -->
+    <article class="container">
+        <fieldset class="border">
+            <legend class="w-auto">Recent posts</legend>
+            <form>
+                <!-- Post 1 -->
+                <div>
+                    <label for="post1">Andy Le</label>
+                    <textarea class="form-control" name="post1" readonly>Yo fakebook is lit!!! 🔥</textarea>
+                    <p>
+                        <button type="like" class="btn btn-light">Like</button>
+                        <button type="comment" class="btn btn-light">Comment</button>
+                    </p>
+                </div>
+                <!-- Post 2 -->
+                <div>
+                    <label for="post2">Jacques Steyn</label>
+                    <textarea class="form-control" name="post2" readonly>I ❤️ HTML.</textarea>
+                    <p>
+                        <button type="like" class="btn btn-light">Like</button>
+                        <button type="comment" class="btn btn-light">Comment</button>
+                    </p>
+                </div>
+
+            </form>
+        </fieldset>
+    </article>
+
+    <!-- Trending hashtags -->
+    <article class="container">
+
+    </article>
+
+    <!-- People you may know -->
+    <article class="container">
+
+    </article>
+
+</body>
+
+<footer>
+
+</footer>
+
 </html>

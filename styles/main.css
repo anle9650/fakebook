@@ -2,6 +2,10 @@
 	box-sizing: border-box
 }
 
+h1 {
+    text-align: center;
+}
+
 .navMenu {
     list-style-type: none;
     margin: 0;
@@ -26,6 +30,3 @@ ul.navMenu a:hover {
     background-color: #111;
   }
 
-h1 {
-    text-align: center;
-}
