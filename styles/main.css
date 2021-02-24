@@ -30,3 +30,49 @@ ul.navMenu a:hover {
     background-color: #111;
   }
 
+
+
+/* sign in page stuff*/
+.signinFooter {
+    text-align: center;
+}
+
+.signInBoxesAndButtons{
+    text-align: center;
+    width:25%;
+    margin:0 auto;
+}
+
+.signInButtons {
+    padding:10px;
+}
+
+.signInLogInButton{
+    width:30%;
+}
+.signInAccountButton{
+    width:auto;
+}
+
+.signInBox{
+    margin-top:10%;
+    /*border-style:solid;*/
+}
+.signInLogo{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    width:30%;
+    height:15%;
+}
+
+
+#emailSignIn {
+    text-align: center;
+    margin-top: 5%;
+}
+
+#passwordSignIn {
+    text-align: center;
+    margin-top: 5%;
+ }
