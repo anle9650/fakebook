@@ -10,9 +10,9 @@
 
 <body>
     <header>
-        
+
         <ul class="navMenu">
-            <li><img src="images/logo.jpg" alt="logo" width=“100” height="50"></li>
+            <li><img src="images/logo.jpg" alt="logo" width=100 height=50></li>
             <li><a href="">About</a></li>
             <li><a href="">Support</a></li>
             <li><a href="signin.html">Sign in</a></li>
@@ -20,17 +20,27 @@
         <h1>Log in to your account</h1>
     </header>
     <div class="signInBox">
-        <img src="images/logo.jpg" alt="logo"  class="signInLogo">
+        <img src="images/logo.jpg" alt="logo" class="signInLogo">
         <fieldset class="container">
-            
+
             <form>
                 <div class="signInBoxesAndButtons">
                     <input type="text" id="emailSignIn" required class="form-control" placeholder="myEmail@email.com">
                     <input type="text" id="passwordSignIn" required class="form-control" placeholder="Password">
+
                     <div class="signInButtons">
+
+
                         <button type="submit" class="btn btn-primary">Log In!</button>
                         <a href="signup.html" class="btn btn-success">Create An Account</a>
+                        <br>
+                        <input type="checkbox" id="rememberCheck" class="form-check-input">
+                        <label id="rememberMeLabel">remember me</label>
+
+                        <br>
                         <a href="signin.html">Forgot Password??</a>
+
+
 
                     </div>
                 </div>
@@ -39,10 +49,17 @@
 
         </fieldset>
     </div>
+    <footer class="signinFooter">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>Fakebook © 2021</p>
+    </footer>
 </body>
 
-<footer class="signinFooter">
-    <p>Fakebook © 2021</p>
-</footer>
+
 
 </html>

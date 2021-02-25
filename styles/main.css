@@ -34,7 +34,9 @@ ul.navMenu a:hover {
 
 /* sign in page stuff*/
 .signinFooter {
+    
     text-align: center;
+   
 }
 
 .signInBoxesAndButtons{
@@ -76,3 +78,4 @@ ul.navMenu a:hover {
     text-align: center;
     margin-top: 5%;
  }
+
