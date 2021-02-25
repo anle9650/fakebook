@@ -24,63 +24,111 @@
         <h1>Welcome to your homepage.</h1>
     </header>
 
-    <!-- Create a post -->
-    <article class="container">
-        <form>
-            <fieldset class="border">
-                <legend class="w-auto">Create a post</legend>
-                <input type="text" id="txtPost" name="txtPost" required class="form-control"
-                    placeholder="What's on your mind?">
+    <section class="container">
+        <article class="row">
+            <!-- Trending hashtags -->
+            <div class="border col-md-3">
+                <legend class="w-auto">Trending</legend>
+                <ul>
+                    <li><a href="">#texas</a></li>
+                    <li><a href="">#covid</a></li>
+                    <li><a href="">#love</a></li>
+                    <li><a href="">#tiktok</a></li>
+                </ul>
+            </div>
+
+            <!-- Create a post -->
+            <div class="col-md-9">
+                <form>
+                    <fieldset class="border">
+                        <legend class="w-auto">Create a post</legend>
+                        <input type="text" id="txtPost" name="txtPost" required class="form-control"
+                            placeholder="What's on your mind?">
+                    </fieldset>
+                    <p>
+                        <button type="submit" class="btn btn-primary">Post</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </p>
+                </form>
+            </div>
+
+        </article>
+
+        <article class="row">
+            <!-- People you may know -->
+            <fieldset class="border col-md-3">
+                <legend class="w-auto">People you may know</legend>
+                <!-- Profile 1 -->
+                <div class="border rounded">
+                    <a href="">Elon Musk</a>
+                    <p>
+                        <img class="rounded" src="images/profilepic1.jpg" alt="profilepic1" width=75 height="100">
+                        <button type="add" class="btn btn-light">Add</button>
+                        <button type="remove" class="btn btn-light">Remove</button>
+                    </p>
+                </div>
+                <!-- Profile 2 -->
+                <div class="border rounded">
+                    <a href="">McLovin'</a>
+                    <p>
+                        <img class="rounded" src="images/profilepic2.jpg" alt="profilepic1" width=75 height="75">
+                        <button type="add" class="btn btn-light">Add</button>
+                        <button type="remove" class="btn btn-light">Remove</button>
+                    </p>
+                </div>
             </fieldset>
-            <p>
-                <button type="submit" class="btn btn-primary">Post</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
-            </p>
-        </form>
-    </article>
 
-    <!-- Recent posts -->
-    <article class="container">
-        <fieldset class="border">
-            <legend class="w-auto">Recent posts</legend>
-            <form>
-                <!-- Post 1 -->
-                <a href="">Andy Le</a>
-                <div class="border rounded post">
-                    <p>Yo fakebook is lit!!! 🔥</p>
-                </div>
-                <p>
-                    <button type="like" class="btn btn-light">Like</button>
-                    <button type="comment" class="btn btn-light">Comment</button>
-                </p>
-                <!-- Post 2 -->
-                <a href="">Jacques Steyn</a>
-                <div class="border rounded post">
-                    <p>I ❤️ HTML.</p>
-                </div>
-                <p>
-                    <button type="like" class="btn btn-light">Like</button>
-                    <button type="comment" class="btn btn-light">Comment</button>
-                </p>
+            <!-- Recent posts -->
+            <div class="col-md-9">
+                <fieldset class="border">
+                    <legend class="w-auto">Recent posts</legend>
+                    <form>
+                        <!-- Post 1 -->
+                        <a href="">Andy Le</a>
+                        <div class="border rounded post">
+                            <p>Yo fakebook is lit!!! 🔥</p>
+                        </div>
+                        <p>
+                            <button type="like" class="btn btn-light">Like</button>
+                            <button type="comment" class="btn btn-light">Comment</button>
+                        </p>
+                        <!-- Post 2 -->
+                        <a href="">Jacques Steyn</a>
+                        <div class="border rounded post">
+                            <p>I ❤️ HTML.</p>
+                        </div>
+                        <p>
+                            <button type="like" class="btn btn-light">Like</button>
+                            <button type="comment" class="btn btn-light">Comment</button>
+                        </p>
+                        <!-- Post 3 -->
+                        <a href="">J. Haadi Jafarian</a>
+                        <div class="border rounded post">
+                            <p>Hello class.</p>
+                        </div>
+                        <p>
+                            <button type="like" class="btn btn-light">Like</button>
+                            <button type="comment" class="btn btn-light">Comment</button>
+                        </p>
+                    </form>
+                </fieldset>
+            </div>
 
-            </form>
-        </fieldset>
-    </article>
+        </article>
 
-    <!-- Trending hashtags -->
-    <article class="container">
-
-    </article>
-
-    <!-- People you may know -->
-    <article class="container">
-
-    </article>
+    </section>
 
 </body>
 
-<footer>
-
+<footer class="footer fixed-bottom">
+    <div>
+        <a class="text-muted" href="">About</a>
+        <a class="text-muted" href="">Careers</a>
+        <a class="text-muted" href="">Help</a>
+        <a class="text-muted" href="">Privacy</a>
+        <a class="text-muted" href="">Terms</a>
+        <a class="text-muted" href="">Fakebook © 2021</a>
+    </div>
 </footer>
 
 </html>
