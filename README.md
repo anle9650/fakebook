@@ -6,7 +6,8 @@ Fakebook is a social network platform. Users can add friends, direct message oth
 
 Clone the repository from Github (https://github.com/anle9650/webapp_spring2021_final.git). This will include the example pages: signin.html, signup.html, and home.html. The styling page can be found in styling/main.css.
 
-```Instructions here.
+```bash 
+Instructions here.
 ```
 
 ## Technologies used
