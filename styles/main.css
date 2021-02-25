@@ -30,6 +30,10 @@ ul.navMenu a:hover {
     background-color: #111;
   }
 
+.post {
+    background-color: rgb(210, 227, 243);
+}
+
 
 
 /* sign in page stuff*/
@@ -47,13 +51,6 @@ ul.navMenu a:hover {
 
 .signInButtons {
     padding:10px;
-}
-
-.signInLogInButton{
-    width:30%;
-}
-.signInAccountButton{
-    width:auto;
 }
 
 .signInBox{
