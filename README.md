@@ -9,6 +9,12 @@ Clone the repository from Github (https://github.com/anle9650/webapp_spring2021_
 ```bash 
 gh repo clone anle9650/webapp_spring2021_final
 ```
+or
+```bash
+git clone https://github.com/anle9650/webapp_spring2021_final.git
+```
+
+For getting further updates we recommend using github desktop to fetch changes  
 
 ## Technologies used
 
