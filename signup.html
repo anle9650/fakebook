@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Sign-up</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue@next"></script>
     <link rel="stylesheet" href="styles/main.css">
 </head>
 
@@ -21,7 +22,7 @@
     <section class="container">
         <h2 class="alert alert-primary">Tell us about yourself.</h2>
         <article>
-            <form>
+            <form onsubmit="return validateForm()" novalidate>
                 <fieldset class="border">
                     <legend class="w-auto">Your information</legend>
                     <div class="form-group row">
@@ -107,7 +108,7 @@
                         <div class="row form-group">
                             <div class="col-sm-12">
                                 <input type="text" id="txtBio" name="txtBio" class="form-control"
-                                    placeholder="Tell us a little more about yourself." required>
+                                    placeholder="Tell us a little more about yourself.">
                             </div>
                         </div>
                     </fieldset>
@@ -133,6 +134,8 @@
                                 class="form-control" placeholder="Confirm password">
                         </div>
                     </div>
+
+                    <div class="invisible alert alert-danger" id="divPasswordErr"></div>
 
                     <div class="row form-group">
                         <div class="col-md-6">
@@ -173,5 +176,9 @@
             <a class="text-muted" href="">Fakebook © 2021</a>
         </div>
     </footer>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -30,6 +30,14 @@ ul.navMenu a:hover {
     background-color: #111;
   }
 
+.hasError {
+    background-color: yellow;
+}
+
+.invisible {
+    display: none;
+}
+
 .post {
     background-color: rgb(210, 227, 243);
 }
