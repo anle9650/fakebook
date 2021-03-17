@@ -1,6 +1,7 @@
 function validateForm() {
-    var formIsValid;
+    var formIsValid = true;
 
+    // Check 1
     var password = document.querySelector("#txtPassword");
     var confirmpassword = document.querySelector("#txtConfirmPassword");
     var divPasswordErr = document.querySelector("#divPasswordErr");
@@ -18,6 +19,9 @@ function validateForm() {
         confirmpassword.classList.remove("hasError");
     }
 
+    // Check 2
+    // This adds a yellow background to any input that fails.
+    // Still need to figure out how to also add an accompanying error message for each input that fails.
     var elements = document.getElementsByTagName("input");
     var invalidChars = ['#', '-', '(', ')', '{', '}', '<', '>', '`', '"'];
     var validChars = true;
@@ -35,6 +39,7 @@ function validateForm() {
         formIsValid = false;
     }
 
+    // Check 3
     var hasLowerCase = false;
     var hasCapital = false;
     var hasNumber = false;
