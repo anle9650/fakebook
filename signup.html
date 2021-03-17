@@ -142,7 +142,7 @@
                             <label for="ddQuestions" class="col-form-label">
                                 Choose a security question
                             </label>
-                            <select id="ddQuestions" name="ddQuestions" class="form-control" required>
+                            <select id="ddQuestions" name="ddQuestions" class="form-control" required onchange="displaySecurityAnswer()">
                                 <option label="Choose a question."></option>
                                 <option value="ddMother">What is your mother's maiden name?</option>
                                 <option value="ddPet">What is the name of your favorite pet?</option>
@@ -150,7 +150,7 @@
                             </select>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="invisible col-md-6" id="divSecurityAnswer">
                             <label for="txtAnswer" class="col-form-label">
                                 Answer
                             </label>

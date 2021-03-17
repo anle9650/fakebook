@@ -69,3 +69,8 @@ function validateForm() {
 
     return formIsValid;
 }
+
+function displaySecurityAnswer() {
+    var divSecurityAnswer = document.querySelector("#divSecurityAnswer");
+    divSecurityAnswer.classList.remove("invisible");
+}
