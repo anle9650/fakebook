@@ -4,7 +4,7 @@ function validateForm() {
     // Check 1
     var password = document.querySelector("#txtPassword");
     var confirmpassword = document.querySelector("#txtConfirmPassword");
-    var divPasswordErr = document.querySelector("#divPasswordErr");
+    var divPasswordErr = document.querySelector("#txtPasswordErr");
 
     if (password.value != confirmpassword.value) {
         divPasswordErr.classList.remove("invisible");
@@ -20,40 +20,28 @@ function validateForm() {
     }
 
     // Check 2
-    // This adds a yellow background to any input that fails.
-    // Still need to figure out how to also add an accompanying error message for each input that fails.
     var elements = document.getElementsByTagName("input");
     var invalidChars = ['#', '-', '(', ')', '{', '}', '<', '>', '`', '"'];
-    var validChars = true;
     for (let i = 0; i < elements.length; i++) {
+        let validInput = true;
         for (let j = 0; j < invalidChars.length; j++) {
             if (elements[i].value.indexOf(invalidChars[j]) != -1) {
-                elements[i].classList.add("hasError");
-                validChars = false;
-                alert(elements[i].name +" contains invalid characters!");
-                //document.getElementById(elements[i].id + "Error").classList.remove("invisible");// 
-                // we could alternatively just get the parent html(of the element) 
-                // and then add some innerhtml to it which would save us from having to put the invisble error html 
-                // there
-                break;
+                validInput = false;
             }
+        }
+        if (validInput == false) {
+            formIsValid = false;
+            elements[i].classList.add("hasError");
+            document.getElementById(elements[i].id + "Err").classList.remove("invisible");
+            document.getElementById(elements[i].id + "Err").innerHTML = "Invalid character entered."
+        }
+        else {
             elements[i].classList.remove("hasError");
+            document.getElementById(elements[i].id + "Err").classList.add("invisible");
         }
     }
-    if (validChars == false) {
-        formIsValid = false;
-    }
-    
-    /*if(validChars == true){// this whole if is also error message code just incase we need to remove it
-        console.log();
-        errorElements = document.getElementsByClassName("errorClass");
-        for (let i=0;i<elements.length;++i){
-            if(!("invisible" in errorElements[i].classList)){
-                errorElements[i].classList.add("invisible");
-            }
-        }
-    }*/
-    
+
+    console.log(formIsValid);
 
     // Check 3
     var hasLowerCase = false;
