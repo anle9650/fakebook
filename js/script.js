@@ -41,8 +41,6 @@ function validateForm() {
         }
     }
 
-    console.log(formIsValid);
-
     // Check 3
     var hasLowerCase = false;
     var hasCapital = false;
