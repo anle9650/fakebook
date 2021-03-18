@@ -20,9 +20,10 @@
         <h1>Let's get started.</h1>
     </header>
     <section class="container">
-        <h2 class="alert alert-primary">Tell us about yourself.</h2>
+        
         <article>
-            <form onsubmit="return validateForm()" novalidate>
+            <h2 class="alert alert-primary">Tell us about yourself.</h2>
+            <form onsubmit="return validateForm()">
                 <fieldset class="border">
                     <legend class="w-auto">Your information</legend>
                     <div class="form-group row">
@@ -32,7 +33,7 @@
                             </label>
                             <input type="text" id="txtFirstName" name="txtFirstName" required class="form-control"
                                 placeholder="First Name">
-                            <p id="txtFirstNameError" class="invisible errorClass">INVALID CHARACTERS!</p> 
+                            <!-- <p id="txtFirstNameError" class="invisible errorClass">INVALID CHARACTERS!</p>  -->
                         </div>
 
                         <div class="col-md-6">
@@ -42,7 +43,7 @@
                             <input type="text" id="txtLastName" name="txtLastName" required class="form-control"
                                 placeholder="Last Name">
 
-                            <p id="txtLastNameError" class="invisible errorClass">INVALID CHARACTERS!</p>
+                            <!-- <p id="txtLastNameError" class="invisible errorClass">INVALID CHARACTERS!</p> -->
                         </div>
                     </div>
 
@@ -54,7 +55,7 @@
 
                             <input type="text" id="txtUserName" name="txtUserName" required class="form-control"
                                 placeholder="Username">
-                            <p id="txtUserNameError" class="invisible errorClass">INVALID CHARACTERS!</p>
+                            <!-- <p id="txtUserNameError" class="invisible errorClass">INVALID CHARACTERS!</p> -->
                         </div>
 
                         <div class="col-md-6">
@@ -63,7 +64,7 @@
                             </label>
                             <input type="email" id="txtEmail" name="txtEmail" required class="form-control"
                                 placeholder="name@example.com">
-                            <p id="txtEmailError" class="invisible errorClass">INVALID CHARACTERS!</p>
+                            <!-- <p id="txtEmailError" class="invisible errorClass">INVALID CHARACTERS!</p> -->
                         </div>
 
                     </div>
@@ -99,14 +100,14 @@
                                 City
                             </label>
                             <input type="text" id="txtCity" name="txtCity" class="form-control" placeholder="City">
-                            <p id="txtCityError" class="invisible errorClass">INVALID CHARACTERS!</p>
+                            <!-- <p id="txtCityError" class="invisible errorClass">INVALID CHARACTERS!</p> -->
                         </div>
                         <div class="col-md-6">
                             <label for="txtState" class="col-form-label">
                                 State
                             </label>
                             <input type="text" id="txtState" name="txtState" class="form-control" placeholder="State">
-                            <p id="txtStateError" class="invisible errorClass">INVALID CHARACTERS!</p>
+                            <!-- <p id="txtStateError" class="invisible errorClass">INVALID CHARACTERS!</p> -->
                         </div>
                     </div>
 
@@ -116,7 +117,7 @@
                             <div class="col-sm-12">
                                 <input type="text" id="txtBio" name="txtBio" class="form-control"
                                     placeholder="Tell us a little more about yourself.">
-                                    <p id="txtBioError" class="invisible errorClass">INVALID CHARACTERS!</p>
+                                    <!-- <p id="txtBioError" class="invisible errorClass">INVALID CHARACTERS!</p> -->
                             </div>
                         </div>
                     </fieldset>

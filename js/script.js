@@ -30,9 +30,9 @@ function validateForm() {
             if (elements[i].value.indexOf(invalidChars[j]) != -1) {
                 elements[i].classList.add("hasError");
                 validChars = false;
-
-                document.getElementById(elements[i].id + "Error").classList.remove("invisible");// error message code
-                // we could alternatively just get the parent html(of the error element) 
+                alert(elements[i].name +" contains invalid characters!");
+                //document.getElementById(elements[i].id + "Error").classList.remove("invisible");// 
+                // we could alternatively just get the parent html(of the element) 
                 // and then add some innerhtml to it which would save us from having to put the invisble error html 
                 // there
                 break;
@@ -44,14 +44,15 @@ function validateForm() {
         formIsValid = false;
     }
     
-    if(validChars == true){// this whole if is also error message code just incase we need to remove it
+    /*if(validChars == true){// this whole if is also error message code just incase we need to remove it
+        console.log();
         errorElements = document.getElementsByClassName("errorClass");
         for (let i=0;i<elements.length;++i){
             if(!("invisible" in errorElements[i].classList)){
                 errorElements[i].classList.add("invisible");
             }
         }
-    }
+    }*/
     
 
     // Check 3
