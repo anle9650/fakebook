@@ -2,7 +2,7 @@
 <section class="container">
     <h2 class="alert alert-primary">Tell us about yourself.</h2>
     <article>
-        <form action="/signup" method="post" onsubmit="return validateForm()" novalidate>
+        <form action="/signup" method="post" novalidate>
             <fieldset class="border">
                 <legend class="w-auto">Your information</legend>
                 <div class="form-group row">
@@ -157,7 +157,15 @@
                 <button type="reset" class="btn btn-secondary">Reset</button>
             </p>
         </form>
+        <% if (successMessage) { %> 
+            <div id="successAlert" class="alert alert-success" role="alert">
+                <%= successMessage %>
+            </div>
+        <% } %> 
+        <% if (errorMessage) { %> 
+            <div id="errorAlert" class="alert alert-danger" role="alert">
+                <%= errorMessage %>
+            </div>
+        <% } %> 
     </article>
 </section>
-
-<script src="../public/js/script.js"></script>

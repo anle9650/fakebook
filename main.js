@@ -1,13 +1,13 @@
 "use strict";
 
-  
-const express = require("express"),
+const mongoose = require("mongoose"),
+express = require("express"),
 app = express(),
 layouts = require("express-ejs-layouts"),
 homeController = require("./controllers/homeController"),
 usersController = require("./controllers/usersController"),
 errorController = require("./controllers/errorController");
-var mongoose = require("mongoose");
+
 mongoose.Promise = global.Promise;
 
 mongoose.connect(

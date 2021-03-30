@@ -51,7 +51,6 @@ var users = [
         securityQuestion: "What is the name of your dummy pet?",
         answer: "sprinkles"
     }
-    // needs more dummy data
 ];
 
 User.deleteMany()
