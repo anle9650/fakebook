@@ -22,6 +22,34 @@ var users = [
         password: "strongpassword123",
         securityQuestion: "What is the name of your first pet?",
         answer: "Oreo"
+    },
+    {
+        firstName: "Jacques",
+        lastName: "Steyn",
+        userName: "Jacques.Steyn",
+        email: "jacques.steyn@ucdenver.edu",
+        gender: "male",
+        DOB: "02/1/1000",
+        city: "colorado",
+        state: "CO",
+        biography: "asdasddsa",
+        password: "strongpassword1234",
+        securityQuestion: "What is the name of your first pet?",
+        answer: "jebidiah"
+    },
+    {
+        firstName: "test",
+        lastName: "dummy",
+        userName: "dummy.test",
+        email: "dummy.test@fakebook.com",
+        gender: "male",
+        DOB: "4/3/1200",
+        city: "New York",
+        state: "New York",
+        biography: "im the test dummy",
+        password: "dummyPassword1234",
+        securityQuestion: "What is the name of your dummy pet?",
+        answer: "sprinkles"
     }
     // needs more dummy data
 ];

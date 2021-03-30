@@ -1,5 +1,9 @@
 "use strict";
 
+const e = require("express");
+const expressEjsLayouts = require("express-ejs-layouts");
+const { EXPECTATION_FAILED } = require("http-status-codes");
+const user = require("../models/user");
 const User = require("../models/user");
 
 exports.getSignupPage = (req, res) => {
@@ -38,4 +42,24 @@ exports.saveUser = (req, res) => {
 
 exports.verifyLogin = (req, res) => {
     // checks if login credentials exists. If yes, renders home.ejs. Otherwise, renders login.ejs with error message that details errors in the data.
-};
+    
+    //console.log("adsfasdasdasdasdasdasdasd");
+    User.findOne({
+        "email": req.body.email
+    }).then((theUser) =>{
+        if(theUser){
+            res.render("home");//now "logged in"
+        }
+        else{
+            res.render("error");//this is where we would put error message stuff
+            console.log("THERE WAS AN ERROR!, you have the wrong credentials!");
+        }
+
+
+    }).catch((theError)=>{
+
+        res.render("error");
+        console.log("there was an error!");
+    });
+    
+};//end verifylogin
