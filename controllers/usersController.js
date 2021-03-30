@@ -26,9 +26,10 @@ exports.saveUser = (req, res) => {
         answer: req.body.txtAnswer
     });
 
+    // Still need to figure out how to render with error messages and change background color.
     Object.keys(newUser).forEach(key => {
         if (!newUser[key] || newUser[key].length === 0) {
-            
+
         }
     })
 
@@ -36,5 +37,5 @@ exports.saveUser = (req, res) => {
 };
 
 exports.verifyLogin = (req, res) => {
-
+    // checks if login credentials exists. If yes, renders home.ejs. Otherwise, renders login.ejs with error message that details errors in the data.
 };
