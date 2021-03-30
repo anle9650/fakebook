@@ -1,0 +1,26 @@
+{
+  "name": "webapp_spring2021_final",
+  "version": "1.0.0",
+  "description": "Contains the web application for Fakebook, a social media platform.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anle9650/webapp_spring2021_final.git"
+  },
+  "author": "Andy Le, Jacques Steyn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anle9650/webapp_spring2021_final/issues"
+  },
+  "homepage": "https://github.com/anle9650/webapp_spring2021_final#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "mongodb": "^3.6.5",
+    "mongoose": "^5.12.2"
+  }
+}
