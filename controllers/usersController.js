@@ -24,6 +24,12 @@ exports.saveUser = (req, res) => {
         password: req.body.txtPassword,
         securityQuestion: req.body.ddQuestions,
         answer: req.body.txtAnswer
+    });
+
+    Object.keys(newUser).forEach(key => {
+        if (!newUser[key] || newUser[key].length === 0) {
+            
+        }
     })
 
     newUser.save();
