@@ -1,7 +1,6 @@
 "use strict";
 
-const express = require("express"),
-    User = require("../models/user");
+const User = require("../models/user");
 
 exports.getSignupPage = (req, res) => {
     res.render("signup", {
