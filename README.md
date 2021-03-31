@@ -25,7 +25,9 @@ For the first check it compares the 2 passwords values and if they are not the s
 
 
 ### Assignment 3
-
+To install and setup this application, first pull or clone the latest version from the repo(see the installation section above). Then make sure that you have the npm package manager(you can use `npm --version` to see).You will also likely want to install mongoDB https://www.mongodb.com/try if you want to see the login/signup functionality. Next you will want to do a `npm install` inside of the cloned folder to automatically install all the needed dependencies for it to work.
+  
+now you will want to run the `seed.js` file to seed the mongo database with some users, to do this type `node seed.js` inside the cloned repo folder. Then to start the actual server you will do a `npm start` and to see the actual web app you will need to navigate to your `localhost:3000`
 
 
 
