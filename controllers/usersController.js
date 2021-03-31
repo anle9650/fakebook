@@ -10,7 +10,9 @@ exports.getSignupPage = (req, res) => {
 };
 
 exports.getLoginPage = (req, res) => {
-    res.render("login");
+    res.render("login", {
+        errorMessage: ""
+    });
 };
 
 exports.saveUser = (req, res) => {
@@ -61,25 +63,23 @@ exports.saveUser = (req, res) => {
 };
 
 exports.verifyLogin = (req, res) => {
-    // checks if login credentials exists. If yes, renders home.ejs. Otherwise, renders login.ejs with error message that details errors in the data.
-
-    //console.log("adsfasdasdasdasdasdasdasd");
     User.findOne({
         "email": req.body.email
-    }).then((theUser) => {
+    })
+    .where("password", req.body.password)
+    .exec()
+    .then((theUser) => {
         if (theUser) {
-            res.render("home");//now "logged in"
+            res.render("home");
         }
         else {
-            res.render("error");//this is where we would put error message stuff
-            console.log("THERE WAS AN ERROR!, you have the wrong credentials!");
+            res.render("login", {
+                errorMessage: "Invalid email or password."
+            });
         }
-
-
-    }).catch((theError) => {
-
-        res.render("error");
-        console.log("there was an error!");
+    })
+    .catch((theError) => {
+        res.send(theError);
     });
 
 };//end verifylogin

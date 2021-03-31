@@ -1,15 +1,5 @@
-
 <div class="container">
-    <header>
-
-        <!--<ul class="navMenu">
-            <li><img src="images/logo.jpg" alt="logo" width=100 height=50></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Support</a></li>
-            <li><a href="signin.html">Sign in</a></li>
-        </ul> fix later -->
-        <h1>Log in to your account.</h1>
-    </header>
+    <h1>Log in to your account.</h1>
     <div class="signInBox">
         <img src="images/logo.jpg" alt="logo" class="signInLogo">
         <fieldset class="container">
@@ -31,13 +21,14 @@
                         <br>
                         <a href="signin.html">Forgot Password??</a>
 
-
-
+                        <% if (errorMessage) { %> 
+                            <div id="errorAlert" class="alert alert-danger" role="alert">
+                                <%= errorMessage %>
+                            </div>
+                        <% } %>
                     </div>
                 </div>
             </form>
-
-
         </fieldset>
     </div>
 </div>
