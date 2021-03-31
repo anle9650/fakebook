@@ -29,7 +29,12 @@ First pull or clone the latest version from the repo(see the installation sectio
   
 now you will want to run the `seed.js` file to seed the mongo database with some users, to do this type `node seed.js` inside the cloned repo folder. Then to start the actual server you will do a `npm start` and to see the actual web app you will need to navigate to your `localhost:3000`
 
+#### Design
+  For the architecture of the app we use the MVC, model-view-controller, architecture. This allows us to render conditionally certain pages to the user based on the requests and it also allows for substantial interaction with the database(such as logging in or signing up).
+  
+In terms of actual design choices, we opted to use layouts with ejs such that we can easily render multiple different pages within the main body content of the page while perserving the header/footer and navigation type menus throughout the site. This is also essentially how the 'login' works right now... it pretty much checks to see if a user with the specified email and password is in the database and if they are it 'logs' you in (by displaying the /home page ) and if it is not, it will display an error message. To do many of these functions we use the mongoose library to easily handle the database data within the program for functionality like signing up and logging in.
 
+ 
 
 ## Contributions
 
