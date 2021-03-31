@@ -10,7 +10,7 @@
                         <label for="txtFirstName" class="col-form-label">
                             First name
                         </label>
-                        <input type="text" id="txtFirstName" name="txtFirstName" required class="form-control"
+                        <input type="text" id="txtFirstName" name="txtFirstName" required class="form-control <%= firstNameError ? 'hasError' : '' %>"
                             placeholder="First Name">
                         <div id="txtFirstNameErr" class="invisible alert alert-danger"></div>
                     </div>
@@ -19,7 +19,7 @@
                         <label for="txtLastName" class="col-form-label">
                             Last name
                         </label>
-                        <input type="text" id="txtLastName" name="txtLastName" required class="form-control"
+                        <input type="text" id="txtLastName" name="txtLastName" required class="form-control <%= lastNameError ? 'hasError' : '' %>"
                             placeholder="Last Name">
                         <div id="txtLastNameErr" class="invisible alert alert-danger"></div>
                     </div>
@@ -31,7 +31,7 @@
                             Create a username
                         </label>
 
-                        <input type="text" id="txtUserName" name="txtUserName" required class="form-control"
+                        <input type="text" id="txtUserName" name="txtUserName" required class="form-control <%= userNameError ? 'hasError' : '' %>"
                             placeholder="Username">
                         <div id="txtUserNameErr" class="invisible alert alert-danger"></div>
                     </div>
@@ -40,7 +40,7 @@
                         <label for="txtEmail" class="col-form-label">
                             Email
                         </label>
-                        <input type="email" id="txtEmail" name="txtEmail" required class="form-control"
+                        <input type="email" id="txtEmail" name="txtEmail" required class="form-control <%= emailError ? 'hasError' : '' %>"
                             placeholder="name@example.com">
                         <div id="txtEmailErr" class="invisible alert alert-danger"></div>
                     </div>
@@ -71,7 +71,7 @@
                         <label for="txtDOB" class="col-form-label">
                             Date of birth
                         </label>
-                        <input type="date" id="txtDOB" name="textDOB" required class="form-control">
+                        <input type="date" id="txtDOB" name="textDOB" required class="form-control <%= DOBError ? 'hasError' : '' %>">
                         <div id="txtDOBErr" class="invisible alert alert-danger"></div>
                     </div>
                 </fieldset>
@@ -81,14 +81,14 @@
                         <label for="txtCity" class="col-form-label">
                             City
                         </label>
-                        <input type="text" id="txtCity" name="txtCity" class="form-control" placeholder="City">
+                        <input type="text" id="txtCity" name="txtCity" class="form-control <%= cityError ? 'hasError' : '' %>" placeholder="City">
                         <div id="txtCityErr" class="invisible alert alert-danger"></div>
                     </div>
                     <div class="col-md-6">
                         <label for="txtState" class="col-form-label">
                             State
                         </label>
-                        <input type="text" id="txtState" name="txtState" class="form-control" placeholder="State">
+                        <input type="text" id="txtState" name="txtState" class="form-control <%= stateError ? 'hasError' : '' %>" placeholder="State">
                         <div id="txtStateErr" class="invisible alert alert-danger"></div>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
                         <label for="txtPassword" class="col-form-label">
                             Password
                         </label>
-                        <input type="password" id="txtPassword" name="txtPassword" required class="form-control"
+                        <input type="password" id="txtPassword" name="txtPassword" required class="form-control <%= passwordError ? 'hasError' : '' %>"
                             placeholder="Password">
                         <div class="invisible alert alert-danger" id="txtPasswordErr"></div>
                     </div>
@@ -123,7 +123,7 @@
                             Confirm Password
                         </label>
                         <input type="password" id="txtConfirmPassword" name="txtConfirmPassword" required
-                            class="form-control" placeholder="Confirm password">
+                            class="form-control <%= confirmPasswordError ? 'hasError' : '' %>" placeholder="Confirm password">
                         <div class="invisible alert alert-danger" id="txtConfirmPasswordErr"></div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                         <label for="ddQuestions" class="col-form-label">
                             Choose a security question
                         </label>
-                        <select id="ddQuestions" name="ddQuestions" class="form-control" required
+                        <select id="ddQuestions" name="ddQuestions" class="form-control <%= securityQuestionError ? 'hasError' : '' %>" required
                             onchange="displaySecurityAnswer()">
                             <option label="Choose a question."></option>
                             <option value="ddMother">What is your mother's maiden name?</option>
@@ -146,7 +146,7 @@
                         <label for="txtAnswer" class="col-form-label">
                             Answer
                         </label>
-                        <input type="text" id="txtAnswer" name="txtAnswer" required class="form-control"
+                        <input type="text" id="txtAnswer" name="txtAnswer" required class="form-control <%= answerError ? 'hasError' : '' %>"
                             placeholder="Answer to security question">
                         <div id="txtAnswerErr" class="invisible alert alert-danger"></div>
                     </div>
