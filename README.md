@@ -18,14 +18,14 @@ For getting further updates we recommend using github desktop to fetch changes
 
 ## Technologies used
 
-All web content is written in HTML. Styling components are written in CSS. Visual Studio Code was the main IDE used for this project. Repository stored on Github.
  
 ### Assignment 2 
 For the first check it compares the 2 passwords values and if they are not the same then we try and display a message and turn the color yellow. For the second check it iterates through the input elements and checks to see if any of the invalid characters are in the inputs and if they are then they are marked with yellow and a message is displayed. For the third check we iterate through the password value and check to see if atleast 1 character is lowercase, 1 character is uppercase, and 1 character is a number and for each of these we set a boolean that then we can see if the user does not have all 3 then display a message and change the color again. Finally for the security answer it utilizes an invisible class that has the css set the display to none and when the selection is changed it removes the invisible class.  
 
 
 ### Assignment 3
-To install and setup this application, first pull or clone the latest version from the repo(see the installation section above). Then make sure that you have the npm package manager(you can use `npm --version` to see).You will also likely want to install mongoDB https://www.mongodb.com/try if you want to see the login/signup functionality. Next you will want to do a `npm install` inside of the cloned folder to automatically install all the needed dependencies for it to work.
+#### To install and setup this application
+First pull or clone the latest version from the repo(see the installation section above). Then make sure that you have the npm package manager(you can use `npm --version` to see).You will also likely want to install mongoDB https://www.mongodb.com/try if you want to see the login/signup functionality. Next you will want to do a `npm install` inside of the cloned folder to automatically install all the needed dependencies for it to work.
   
 now you will want to run the `seed.js` file to seed the mongo database with some users, to do this type `node seed.js` inside the cloned repo folder. Then to start the actual server you will do a `npm start` and to see the actual web app you will need to navigate to your `localhost:3000`
 
