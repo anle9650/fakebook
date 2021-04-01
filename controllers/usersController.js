@@ -33,7 +33,7 @@ exports.saveUser = (req, res) => {
     formErrors.lastNameError = !req.body.txtLastName;
     formErrors.userNameError = !req.body.txtUserName;
     formErrors.emailError = !req.body.txtEmail;
-    formErrors.DOBError = !req.body.txtDOB;
+    formErrors.DOBError = !req.body.textDOB;
     formErrors.cityError = !req.body.txtCity;
     formErrors.stateError = !req.body.txtState;
     formErrors.passwordError = !req.body.txtPassword;
@@ -41,6 +41,7 @@ exports.saveUser = (req, res) => {
     formErrors.securityQuestionError = !req.body.ddQuestions;
     formErrors.answerError = !req.body.txtAnswer;
 
+    console.log("doberror:  ",formErrors.DOBError);
     if (formErrors.firstNameError || formErrors.lastNameError || formErrors.userNameError || formErrors.emailError || formErrors.DOBError || formErrors.cityError || formErrors.stateError ||
         formErrors.passwordError || formErrors.confirmPasswordError || formErrors.securityQuestionError || formErrors.answerError) {
         formErrors.successMessage = "";
