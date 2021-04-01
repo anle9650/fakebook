@@ -41,7 +41,6 @@ exports.saveUser = (req, res) => {
     formErrors.securityQuestionError = !req.body.ddQuestions;
     formErrors.answerError = !req.body.txtAnswer;
 
-    console.log("doberror:  ",formErrors.DOBError);
     if (formErrors.firstNameError || formErrors.lastNameError || formErrors.userNameError || formErrors.emailError || formErrors.DOBError || formErrors.cityError || formErrors.stateError ||
         formErrors.passwordError || formErrors.confirmPasswordError || formErrors.securityQuestionError || formErrors.answerError) {
         formErrors.successMessage = "";

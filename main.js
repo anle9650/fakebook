@@ -29,8 +29,7 @@ app.use(
 );
 app.use(express.json());
 
-//app.get("/", homeController.getHomePage);
-app.get("/", usersController.getLoginPage);
+app.get("/", homeController.getHomePage);
 app.get("/signup", usersController.getSignupPage);
 app.get("/login", usersController.getLoginPage);
 app.post("/signup", usersController.saveUser);
