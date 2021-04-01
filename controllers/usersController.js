@@ -92,6 +92,7 @@ exports.verifyLogin = (req, res) => {
             res.render("home");
         }
         else {
+            
             res.render("login", {
                 errorMessage: "Invalid email or password."
             });
