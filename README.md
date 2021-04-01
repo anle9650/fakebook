@@ -38,5 +38,5 @@ In terms of actual design choices, we opted to use layouts with ejs such that we
 
 ## Contributions
 
-The sign-up page and homepage were designed by Andy Le. The sign-in page was designed by Jacques Steyn.
+The sign-up page and homepage were designed by Andy Le. Server-side validation functions for signup and sign in were designed by Andy Le. The sign-in page was designed by Jacques Steyn.
  
