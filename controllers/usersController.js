@@ -18,7 +18,7 @@ let getUserParams = body => {
         state: body.state,
         biography: body.bio,
         securityQuestion: body.ddQuestions,
-        securityAnswer: body.secAnswer,
+        securityAnswer: body.securityAnswer,
     };
 };
 
@@ -30,8 +30,8 @@ module.exports = {
             errorMessage: ""
         });
     },
-    getSignupPage: (req,res) =>{
-        res.render("users/signup");
+    new: (req,res) =>{
+        res.render("users/new");
     },
     create: (req, res, next) => {
         if(req.skip) return next();
@@ -63,22 +63,21 @@ module.exports = {
 
         req.check("first").notEmpty();
         req.check("last").notEmpty();
-        //req.check("username").notEmpty();
+        req.check("userName").notEmpty();
         req.check("gender").notEmpty();
         req.check("DoB").notEmpty();
         req.check("state").notEmpty();
         req.check("ddQuestions").notEmpty();
-        req.check("secAnswer").notEmpty();
+        req.check("securityAnswer").notEmpty();
 
         //req.check("email","email is not valid!").isEmail();
         req.check("password","password cannot be empty").notEmpty();
         req.getValidationResult().then((error) => {
             if(!error.isEmpty()){
                 let messages = error.array().map( e => e.msg);
-                //req.flash("error",messages.join(" and "));
-                console.log("very nice word error messages:",messages);
+                req.flash("error",messages.join(" and "));
                 req.skip = true;
-                res.locals.redirect = "/users/signup";
+                res.locals.redirect = "/users/new";
                 next();
             }
             else{

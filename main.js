@@ -71,8 +71,8 @@ app.use("/", router);
 router.get("/home",homeController.getHomePage);
 
 //router.get("/users",usersController.index, usersController.indexView);
-router.get("/users/new",usersController.getSignupPage);
-router.post("/users/create",usersController.validate,usersController.create, usersController.redirectView);
+router.get("/users/new",usersController.new);
+router.post("/users/create",usersController.validate, usersController.create, usersController.redirectView);
 router.get("/users/login",usersController.getLoginPage);
 router.post("/users/login",usersController.authenticate);
 router.get("/users/logout",usersController.logout,usersController.redirectView);

@@ -24,36 +24,36 @@ const mongoose = require("mongoose"),
     email:{
         type: String,
         required: true,
-        unique: true,
+        unique: true
     },
     gender:{
         type: String,
-        required: true,
+        required: true
     },
     DOB:{
         type: Date,
-        required: true,
+        required: true
     },
     city:{
         type: String,
-        required: false,
+        required: false
     },
     state:{
         type: String,
-        required: true,
+        required: true
     },
     biography:{
         type: String,
         required: false,
-        max: 250,//im not sure if max here refers to characters or..?
+        max: 250//im not sure if max here refers to characters or..?
     },
-    ddQuestions:{
+    securityQuestion:{
         type: String,
-        //required: true, some problem here when making a new user
+        required: true //some problem here when making a new user
     },
-    secAnswer:{
+    securityAnswer:{
         type: String,
-        //required: true,  // some problem here when making a new user
+        required: true  // some problem here when making a new user
     },
 
 },
