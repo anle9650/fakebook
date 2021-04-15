@@ -16,7 +16,7 @@
             <% if (loggedIn) { %>
                 <li></li>
                 <li><a href="<%= `/users/${currentUser._id}`%>">Logged in as <%= currentUser.fullName %></a></li>
-                <li><a href="/">Home</a></li>
+                <li><a href="/home">Home</a></li>
                 <li><a href="<%= `/users/${currentUser._id}/edit`%>">Edit profile</a></li>
                 <li><a href="">Friends</a></li>
                 <li><a href="">Messages</a></li>
