@@ -90,7 +90,7 @@ module.exports = {
         failureRedirect: "/users/login",
         failureFlash: "Login failed! check your email or password! ",
         successRedirect: "/home",
-        sucessFlash: "Logged in!",
+        successFlash: "Logged in!",
     }),
 
     logout : (req,res,next) => {
@@ -122,33 +122,18 @@ module.exports = {
     update: (req, res, next) => {
         if(req.skip) return next();
 
+        let userId = req.params.id,
+            userParams = getUserParams(req.body);
 
-        let userId = req.params.id;
         User.findOneAndUpdate(userId, {
-            name:{
-                first: body.first,
-                last: body.last,
-            },
-            //userName: body.userName,
-            email: body.email,
-            gender: body.gender,
-            DOB: body.DoB,
-            city: body.city,
-            state: body.state,
-            biography: body.bio,
-            securityQuestion: body.ddQuestions,
-            securityAnswer: body.secAnswer,
-
+            $set: userParams
         })
             .then(user => {
                 res.locals.user = user;
                 res.locals.redirect = `/users/${user._id}`;// doesnt exist yet
-                
                 next();
-
             })
-            .catch(error => {
-                
+            .catch(error => {  
                 console.log(`error fetching user by id: ${error.message}`);
                 next();
             })
@@ -165,120 +150,4 @@ module.exports = {
                 console.log(`error fetching user by id: ${error.message}`);
             })
     }
-
-
-
 };// end of module.exports 
-
-
-
-
-
-
-
-
-
-/*
-var formErrors = {
-    firstNameError: false,
-    lastNameError: false,
-    userNameError: false,
-    emailError: false,
-    DOBError: false,
-    cityError: false,
-    stateError: false,
-    passwordError: false,
-    confirmPasswordError: false,
-    securityQuestionError: false,
-    answerError: false,
-    successMessage: "",
-    errorMessage: ""
-};
-
-exports.getSignupPage = (req, res) => {
-    res.render("signup", formErrors);
-};
-
-exports.getLoginPage = (req, res) => {
-    res.render("login", {
-        errorMessage: ""
-    });
-};
-
-exports.saveUser = (req, res) => {
-    formErrors.firstNameError = !req.body.txtFirstName;
-    formErrors.lastNameError = !req.body.txtLastName;
-    formErrors.userNameError = !req.body.txtUserName;
-    formErrors.emailError = !req.body.txtEmail;
-    formErrors.DOBError = !req.body.textDOB;
-    formErrors.cityError = !req.body.txtCity;
-    formErrors.stateError = !req.body.txtState;
-    formErrors.passwordError = !req.body.txtPassword;
-    formErrors.confirmPasswordError = !req.body.txtConfirmPassword;
-    formErrors.securityQuestionError = !req.body.ddQuestions;
-    formErrors.answerError = !req.body.txtAnswer;
-
-    if (formErrors.firstNameError || formErrors.lastNameError || formErrors.userNameError || formErrors.emailError || formErrors.DOBError || formErrors.cityError || formErrors.stateError ||
-        formErrors.passwordError || formErrors.confirmPasswordError || formErrors.securityQuestionError || formErrors.answerError) {
-        formErrors.successMessage = "";
-        formErrors.errorMessage = "Please complete the highlighted fields.";
-        res.render("signup", formErrors);
-        return;
-    }
-    else if (req.body.txtPassword != req.body.txtConfirmPassword) {
-        formErrors.successMessage = "";
-        formErrors.errorMessage = "Passwords must match.";
-        res.render("signup", formErrors);
-        return;
-    };
-
-    let newUser = new User({
-        firstName: req.body.txtFirstName,
-        lastName: req.body.txtLastName,
-        userName: req.body.txtUserName,
-        email: req.body.txtEmail,
-        gender: req.body.gender,
-        DOB: req.body.txtDOB,
-        city: req.body.txtCity,
-        state: req.body.txtState,
-        biography: req.body.txtBio,
-        password: req.body.txtPassword,
-        securityQuestion: req.body.ddQuestions,
-        answer: req.body.txtAnswer
-    });
-
-    newUser.save()
-        .then(result => {
-            formErrors.successMessage = "Your account has been successfully created!";
-            formErrors.errorMessage = "";
-            res.render("signup", formErrors)
-        })
-        .catch(error => {
-            if (error) res.send(error);
-        });
-};
-
-exports.verifyLogin = (req, res) => {
-    User.findOne({
-        "email": req.body.email
-    })
-    .where("password", req.body.password)
-    .exec()
-    .then((theUser) => {
-        if (theUser) {
-            res.render("home");
-        }
-        else {
-            res.render("login", {
-                errorMessage: "Invalid email or password."
-            });
-        }
-    })
-    .catch((theError) => {
-        res.send(theError);
-    });
-
-};//end verifylogin
-
-
-*/
