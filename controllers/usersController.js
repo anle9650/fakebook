@@ -70,7 +70,7 @@ module.exports = {
         req.check("ddQuestions", "Security question cannot be empty").notEmpty();
         req.check("securityAnswer", "Answer cannot be empty").notEmpty();
         req.check("password","password cannot be empty").notEmpty();
-        
+
         req.getValidationResult().then((error) => {
             if(!error.isEmpty()){
                 let messages = error.array().map( e => e.msg);
@@ -136,6 +136,23 @@ module.exports = {
                 console.log(`error fetching user by id: ${error.message}`);
                 next();
             })
+    },
+
+    show: (req, res, next) => {
+        let userId= req.params.id;
+        User.findById(userId)
+        .then(user => {
+            res.locals.user = user;
+            next();
+        })
+        .catch(error => {
+            console.log(`Error fetching user by ID: ${error.message}`);
+            next(error);
+        });
+    },
+
+    showView: (req, res) => {
+        res.render("users/show");
     },
 
     delete: (req, res, next) => {
