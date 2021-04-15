@@ -1,7 +1,181 @@
 "use strict";
 
 const User = require("../models/user");
+const passport = require("passport");
+const { body } = require("express-validator/check");
 
+// reminder to uncomment flashes at some point
+module.exports = {
+    getLoginPage: (req,res) =>{
+
+        res.render("users/login",{
+            errorMessage: ""
+        });
+    },
+    getSignupPage: (req,res) =>{
+        res.render("users/signup");
+    },
+    create: (req, res, next) => {
+        if(req.skip) return next();
+        
+        let newUser = new User({
+            name:{
+                first: body.first,
+                last: body.last,
+            },
+            userName: body.userName,
+            email: body.email,
+            gender: body.gender,
+            DOB: body.DoB,
+            city: body.city,
+            state: body.state,
+            biography: body.bio,
+            securityQuestion: body.ddQuestions,
+            securityAnswer: body.secAnswer,
+        });
+
+
+        User.register(newUser, req.body.password, (error, user)=> {
+            if(user){
+                //req.flash("success","User Account successfully created!");
+                res.locals.redirect = "/users";
+                next();
+            }
+            else{
+                //req.flash("error",`failed to create user account: ${error.message}`);
+                res.locals.redirect = "/users/new";
+                next();
+            }
+        });
+    },
+
+
+
+    validate: (req,res,next) => {
+
+        req.sanitizeBody("email").normalizeEmail({
+            all_lowercase: true,
+        }).trim();
+
+        req.check("name.first").notEmpty();
+        req.check("name.last").notEmpty();
+        req.check("userName").notEmpty();
+        req.check("gender").notEmpty();
+        req.check("DoB").notEmpty();
+        req.check("state").notEmpty();
+        req.check("securityQuestion").notEmpty();
+        req.check("securityAnswer").notEmpty();
+        
+
+
+        req.check("email","email is not valid!").isEmail();
+        req.check("password","password cannot be empty").notEmpty();
+        req.getValidationResult().then((error) => {
+            if(!error.isEmpty()){
+                let messages = error.array().map( e => e.msg);
+                //req.flash("error",messages.join(" and "));
+                req.skip = true;
+                res.locals.redirect = "/users/signup";
+                next();
+            }
+            else{
+                next();
+            }
+        });
+    },
+    authenticate: passport.authenticate("local", {
+        failureRedirect: "/users/login",
+        failureFlash: "Login failed! check your email or password! ",
+        successRedirect: "/",
+        sucessFlash: "Logged in!",
+    }),
+
+    logout : (req,res,next) => {
+        req.logout();
+        //req.flash("success","you have been logged out!");
+        res.locals.redirect = "/";
+        next();
+    },
+    redirectView: (req, res, next) => {
+        let redirectPath = res.locals.redirect;
+        if (redirectPath != undefined) res.redirect(redirectPath);
+        else next();
+    },
+
+    edit: (req, res, next) => {
+        let userId = req.params.id;
+        
+        User.findById(userId)
+            .then(user => {
+                res.render("users/edit", { user: user });// this doesnt exist yet
+            })
+            .catch(error => {
+                
+                console.log(`error fetching user by id: ${error.message}`);
+                next(error);
+            })
+    },
+
+    update: (req, res, next) => {
+        if(req.skip) return next();
+
+
+        let userId = req.params.id;
+        User.findOneAndUpdate(userId, {
+            name:{
+                first: body.first,
+                last: body.last,
+            },
+            userName: body.userName,
+            email: body.email,
+            gender: body.gender,
+            DOB: body.DoB,
+            city: body.city,
+            state: body.state,
+            biography: body.bio,
+            securityQuestion: body.ddQuestions,
+            securityAnswer: body.secAnswer,
+
+        })
+            .then(user => {
+                res.locals.user = user;
+                res.locals.redirect = `/users/${user._id}`;// doesnt exist yet
+                
+                next();
+
+            })
+            .catch(error => {
+                
+                console.log(`error fetching user by id: ${error.message}`);
+                next();
+            })
+    },
+
+    delete: (req, res, next) => {
+        let userId = req.params.id;
+        User.findByIdAndRemove(userId)
+            .then(() => {
+                res.locals.redirect = "/users";// does exist yet
+                next();
+            })
+            .catch(error => {
+                console.log(`error fetching user by id: ${error.message}`);
+            })
+    }
+
+
+
+};// end of module.exports 
+
+
+
+
+
+
+
+
+
+/*
 var formErrors = {
     firstNameError: false,
     lastNameError: false,
@@ -102,3 +276,6 @@ exports.verifyLogin = (req, res) => {
     });
 
 };//end verifylogin
+
+
+*/

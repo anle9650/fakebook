@@ -2,7 +2,7 @@
 <section class="container">
     <h2 class="alert alert-primary">Tell us about yourself.</h2>
     <article>
-        <form action="/signup" method="post" novalidate>
+        <form action="/users/create" method="post" novalidate>
             <fieldset class="border">
                 <legend class="w-auto">Your information</legend>
                 <div class="form-group row">
@@ -10,7 +10,7 @@
                         <label for="txtFirstName" class="col-form-label">
                             First name
                         </label>
-                        <input type="text" id="txtFirstName" name="txtFirstName" required class="form-control <%= firstNameError ? 'hasError' : '' %>"
+                        <input type="text" id="txtFirstName" name="first" required class="form-control "
                             placeholder="First Name">
                         <div id="txtFirstNameErr" class="invisible alert alert-danger"></div>
                     </div>
@@ -19,7 +19,7 @@
                         <label for="txtLastName" class="col-form-label">
                             Last name
                         </label>
-                        <input type="text" id="txtLastName" name="txtLastName" required class="form-control <%= lastNameError ? 'hasError' : '' %>"
+                        <input type="text" id="txtLastName" name="last" required class="form-control "
                             placeholder="Last Name">
                         <div id="txtLastNameErr" class="invisible alert alert-danger"></div>
                     </div>
@@ -31,7 +31,7 @@
                             Create a username
                         </label>
 
-                        <input type="text" id="txtUserName" name="txtUserName" required class="form-control <%= userNameError ? 'hasError' : '' %>"
+                        <input type="text" id="txtUserName" name="userName" required class="form-control "
                             placeholder="Username">
                         <div id="txtUserNameErr" class="invisible alert alert-danger"></div>
                     </div>
@@ -40,7 +40,7 @@
                         <label for="txtEmail" class="col-form-label">
                             Email
                         </label>
-                        <input type="email" id="txtEmail" name="txtEmail" required class="form-control <%= emailError ? 'hasError' : '' %>"
+                        <input type="email" id="txtEmail" name="email" required class="form-control "
                             placeholder="name@example.com">
                         <div id="txtEmailErr" class="invisible alert alert-danger"></div>
                     </div>
@@ -71,7 +71,7 @@
                         <label for="txtDOB" class="col-form-label">
                             Date of birth
                         </label>
-                        <input type="date" id="txtDOB" name="textDOB" required class="form-control <%= DOBError ? 'hasError' : '' %>">
+                        <input type="date" id="txtDOB" name="DoB" required class="form-control ">
                         <div id="txtDOBErr" class="invisible alert alert-danger"></div>
                     </div>
                 </fieldset>
@@ -81,14 +81,14 @@
                         <label for="txtCity" class="col-form-label">
                             City
                         </label>
-                        <input type="text" id="txtCity" name="txtCity" class="form-control <%= cityError ? 'hasError' : '' %>" placeholder="City">
+                        <input type="text" id="txtCity" name="city" class="form-control " placeholder="City">
                         <div id="txtCityErr" class="invisible alert alert-danger"></div>
                     </div>
                     <div class="col-md-6">
                         <label for="txtState" class="col-form-label">
                             State
                         </label>
-                        <input type="text" id="txtState" name="txtState" class="form-control <%= stateError ? 'hasError' : '' %>" placeholder="State">
+                        <input type="text" id="txtState" name="state" class="form-control " placeholder="State">
                         <div id="txtStateErr" class="invisible alert alert-danger"></div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                     <legend class="w-auto">Write a biography (optional)</legend>
                     <div class="row form-group">
                         <div class="col-sm-12">
-                            <input type="text" id="txtBio" name="txtBio" class="form-control"
+                            <input type="text" id="txtBio" name="bio" class="form-control"
                                 placeholder="Tell us a little more about yourself.">
                             <div id="txtBioErr" class="invisible alert alert-danger"></div>
                         </div>
@@ -113,7 +113,7 @@
                         <label for="txtPassword" class="col-form-label">
                             Password
                         </label>
-                        <input type="password" id="txtPassword" name="txtPassword" required class="form-control <%= passwordError ? 'hasError' : '' %>"
+                        <input type="password" id="txtPassword" name="password" required class="form-control"
                             placeholder="Password">
                         <div class="invisible alert alert-danger" id="txtPasswordErr"></div>
                     </div>
@@ -123,7 +123,7 @@
                             Confirm Password
                         </label>
                         <input type="password" id="txtConfirmPassword" name="txtConfirmPassword" required
-                            class="form-control <%= confirmPasswordError ? 'hasError' : '' %>" placeholder="Confirm password">
+                            class="form-control " placeholder="Confirm password">
                         <div class="invisible alert alert-danger" id="txtConfirmPasswordErr"></div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                         <label for="ddQuestions" class="col-form-label">
                             Choose a security question
                         </label>
-                        <select id="ddQuestions" name="ddQuestions" class="form-control <%= securityQuestionError ? 'hasError' : '' %>" required
+                        <select id="ddQuestions" name="ddQuestions" class="form-control " required
                             onchange="displaySecurityAnswer()">
                             <option label="Choose a question."></option>
                             <option value="ddMother">What is your mother's maiden name?</option>
@@ -146,7 +146,7 @@
                         <label for="txtAnswer" class="col-form-label">
                             Answer
                         </label>
-                        <input type="text" id="txtAnswer" name="txtAnswer" required class="form-control <%= answerError ? 'hasError' : '' %>"
+                        <input type="text" id="txtAnswer" name="secAnswer" required class="form-control "
                             placeholder="Answer to security question">
                         <div id="txtAnswerErr" class="invisible alert alert-danger"></div>
                     </div>
@@ -157,15 +157,6 @@
                 <button type="reset" class="btn btn-secondary">Reset</button>
             </p>
         </form>
-        <% if (successMessage) { %> 
-            <div id="successAlert" class="alert alert-success" role="alert">
-                <%= successMessage %>
-            </div>
-        <% } %> 
-        <% if (errorMessage) { %> 
-            <div id="errorAlert" class="alert alert-danger" role="alert">
-                <%= errorMessage %>
-            </div>
-        <% } %> 
+        
     </article>
 </section>

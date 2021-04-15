@@ -1,7 +1,7 @@
 "use strict";
 
 exports.getHomePage = (req, res) => {
-    res.render("login", {
+    res.render("users/login", {
         errorMessage: ""
     });
 };

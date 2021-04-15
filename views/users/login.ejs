@@ -1,10 +1,10 @@
 <h1>Log in to your account.</h1>
 <div class="container">
     <div class="signInBox">
-        <img src="images/logo.jpg" alt="logo" class="signInLogo">
+        <img src="/images/logo.jpg" alt="logo" class="signInLogo">
         <fieldset class="container">
 
-            <form action="/login" method="POST">
+            <form action="/users/login" method="POST">
                 
                 <div class="signInBoxesAndButtons">
                     <input type="text" name ="email" id="emailSignIn" required class="form-control" placeholder="myEmail@email.com">
@@ -14,7 +14,7 @@
 
 
                         <button type="submit" class="btn btn-primary">Log In!</button>
-                        <a href="/signup" class="btn btn-success">Create An Account</a>
+                        <a href="users/signup" class="btn btn-success">Create An Account</a>
                         <br>
                         <input type="checkbox" id="rememberCheck" class="form-check-input">
                         <label id="rememberMeLabel">remember me</label>
