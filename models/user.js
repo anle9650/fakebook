@@ -56,6 +56,9 @@ const mongoose = require("mongoose"),
         required: true  // some problem here when making a new user
     },
 
+    posts: [{type: Schema.Types.ObjectId, ref: Post}],
+
+
 },
 {
     timeStamps: true,
