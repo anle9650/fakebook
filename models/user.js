@@ -4,6 +4,7 @@ const mongoose = require("mongoose"),
     {Schema} = mongoose,
     passport = require("passport"),
     passportLocalMongoose = require("passport-local-mongoose"),
+    Post = require("./post"),
     userSchema = new Schema({
     name:{
         first:{
@@ -55,6 +56,9 @@ const mongoose = require("mongoose"),
         type: String,
         required: true  // some problem here when making a new user
     },
+
+    posts: [{type: Schema.Types.ObjectId, ref: Post}],
+
 
 },
 {

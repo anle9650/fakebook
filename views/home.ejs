@@ -14,10 +14,10 @@
 
         <!-- Create a post -->
         <div class="col-md-9">
-            <form>
+            <form action="/posts/create" method="POST">
                 <fieldset class="border">
                     <legend class="w-auto">Create a post</legend>
-                    <input type="text" id="txtPost" name="txtPost" required class="form-control"
+                    <input type="text" id="txtPost" name="content" required class="form-control"
                         placeholder="What's on your mind?">
                 </fieldset>
                 <p>

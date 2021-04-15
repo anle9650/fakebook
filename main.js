@@ -15,6 +15,7 @@ passport = require("passport"),
 homeController = require("./controllers/homeController"),
 usersController = require("./controllers/usersController"),
 errorController = require("./controllers/errorController"),
+postsController = require("./controllers/postsController"),
 User = require("./models/user");
 
 mongoose.Promise = global.Promise;
@@ -80,6 +81,11 @@ router.get("/users/logout",usersController.logout,usersController.redirectView);
 router.get("/users/:id/edit", usersController.edit);
 router.put("/users/:id/update", usersController.validate,usersController.update, usersController.redirectView);
 //router.delete("/users/:id/delete", usersController.delete, usersController.redirectView);
+
+router.post("/posts/create",postsController.create);
+
+
+
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
