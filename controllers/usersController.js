@@ -43,7 +43,7 @@ module.exports = {
             if(user){
                 req.flash("success", "User Account successfully created!");
                 console.log("Successfully created user account!");
-                res.locals.redirect = "/home";
+                res.locals.redirect = "/users/login";
                 next();
             }
             else{
@@ -57,9 +57,10 @@ module.exports = {
 
     validate: (req,res,next) => {
 
-        /*req.sanitizeBody("email").normalizeEmail({
-            all_lowercase: true,
-        }).trim();*/
+        req.sanitizeBody("email").normalizeEmail({
+            all_lowercase: true
+        }).trim();
+        req.check("email", "Email is invalid").isEmail();
 
         req.check("first").notEmpty();
         req.check("last").notEmpty();
@@ -70,7 +71,6 @@ module.exports = {
         req.check("ddQuestions").notEmpty();
         req.check("securityAnswer").notEmpty();
 
-        //req.check("email","email is not valid!").isEmail();
         req.check("password","password cannot be empty").notEmpty();
         req.getValidationResult().then((error) => {
             if(!error.isEmpty()){
