@@ -19,11 +19,26 @@
             <li><a href="">My profile</a></li>
             <li><a href="">Settings</a></li>
             <li><a href="">Support</a></li>
-            <li><a href="login">Signout</a></li>
+            <% if (loggedIn) { %>
+                <li><a href="<%= `/users/${currentUser._id}`%>">Logged in as <%= currentUser.fullName %></a></li>
+                <li><a href="/users/logout">Log out</a></li>
+            <% } else { %>
+                <li><a href="/users/login">Log In</a></li>
+            <% } %> 
         </ul>
     </header>
 
     <%- body %>
+
+    <div class="flashes">
+        <% if (flashMessages) { %>
+            <% if (flashMessages.success) { %>
+                <div class="alert alert-success"><%= flashMessages.success %></div>
+            <% } else if (flashMessages.error) { %>
+                <div class="alert alert-danger"><%= flashMessages.error %></div>
+            <% } %>
+        <% } %>
+    </div>
     
     <footer class="footer">
         <div>

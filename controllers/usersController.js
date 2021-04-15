@@ -4,17 +4,13 @@ const User = require("../models/user");
 const passport = require("passport");
 //const { body } = require("express-validator/check");
 
-
-
-
-
 let getUserParams = body => {
     return {
         name:{
             first: body.first,
             last: body.last,
         },
-        //userName: body.userName,
+        userName: body.userName,
         email: body.email,
         gender: body.gender,
         DOB: body.DoB,
@@ -25,12 +21,6 @@ let getUserParams = body => {
         securityAnswer: body.secAnswer,
     };
 };
-
-
-
-
-
-
 
 // reminder to uncomment flashes at some point
 module.exports = {
@@ -51,21 +41,19 @@ module.exports = {
 
         User.register(newUser, req.body.password, (error, user)=> {
             if(user){
-                //req.flash("success","User Account successfully created!");
-                console.log("successfully made user account!");
-                res.locals.redirect = "/users";
+                req.flash("success", "User Account successfully created!");
+                console.log("Successfully created user account!");
+                res.locals.redirect = "/home";
                 next();
             }
             else{
-                //req.flash("error",`failed to create user account: ${error.message}`);
+                req.flash("error",`failed to create user account: ${error.message}`);
                 console.log(`failed to make user Account: ${error.message}`);
                 res.locals.redirect = "/users/new";
                 next();
             }
         });
     },
-
-
 
     validate: (req,res,next) => {
 

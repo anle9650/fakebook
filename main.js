@@ -17,8 +17,6 @@ usersController = require("./controllers/usersController"),
 errorController = require("./controllers/errorController"),
 User = require("./models/user");
 
-
-
 mongoose.Promise = global.Promise;
 
 mongoose.connect(
@@ -73,7 +71,7 @@ app.use("/", router);
 router.get("/home",homeController.getHomePage);
 
 //router.get("/users",usersController.index, usersController.indexView);
-router.get("/users/signup",usersController.getSignupPage);
+router.get("/users/new",usersController.getSignupPage);
 router.post("/users/create",usersController.validate,usersController.create, usersController.redirectView);
 router.get("/users/login",usersController.getLoginPage);
 router.post("/users/login",usersController.authenticate);
@@ -83,43 +81,9 @@ router.get("/users/logout",usersController.logout,usersController.redirectView);
 //router.put("/users/:id/update", usersController.validate,usersController.update, usersController.redirectView);
 //router.delete("/users/:id/delete", usersController.delete, usersController.redirectView);
 
-
-app.use(errorController.pageNotFoundError);
-app.use(errorController.internalServerError);
-
-
-
-
-app.listen(app.get("port"), () => {
-  console.log(`Server running at http://localhost: ${app.get("port")}`);
-});
-
-/*
-app.set("port", process.env.PORT || 3000);
-
-app.set("view engine", "ejs");
-app.use(layouts);
-
-app.use(express.static("public"));
-
-app.use(
-  express.urlencoded({
-    extended: false
-  })
-);
-app.use(express.json());
-
-app.get("/", homeController.getHomePage);
-app.get("/signup", usersController.getSignupPage);
-app.get("/login", usersController.getLoginPage);
-app.post("/signup", usersController.saveUser);
-app.post("/login", usersController.verifyLogin);
-
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
 
 app.listen(app.get("port"), () => {
   console.log(`Server running at http://localhost: ${app.get("port")}`);
 });
-
-*/

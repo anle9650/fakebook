@@ -1,10 +1,10 @@
 "use strict";
 
 const mongoose = require("mongoose"),
-{Schema } = require("mongoose"),
-passportLocalMongoose =  require("passport-local-mongoose");
-const passport = require("passport");
-var userSchema = new mongoose.Schema ({ 
+    {Schema} = mongoose,
+    passport = require("passport"),
+    passportLocalMongoose = require("passport-local-mongoose"),
+    userSchema = new Schema({
     name:{
         first:{
             type: String,
@@ -14,6 +14,11 @@ var userSchema = new mongoose.Schema ({
             type: String,
             required: true,
         }
+    },
+
+    userName: {
+        type: String,
+        required: true
     },
     
     email:{
@@ -56,52 +61,13 @@ var userSchema = new mongoose.Schema ({
     timeStamps: true,
 });
 
-
-
-
+userSchema.virtual("fullName")
+    .get(function() {
+        return `${this.name.first} ${this.name.last}`;
+    });
 
 userSchema.plugin(passportLocalMongoose,{
     usernameField: 'email',
 });
 
-
 module.exports = mongoose.model("User", userSchema);
-
-
-/*
-    userSchema = mongoose.Schema({
-        firstName: String,
-        lastName: String,
-        userName: String,
-        email: String,
-        gender: String,
-        DOB: Date,
-        city: String,
-        state: String,
-        biography: String,
-        password: String,
-        securityQuestion: String,
-        answer: String
-    });
-
-*/
-
-
-
-/*
-
-
-<!--<% if (successMessage) { %> 
-            <div id="successAlert" class="alert alert-success" role="alert">
-                <%= successMessage %>
-            </div>
-        <% } %> 
-        <% if (errorMessage) { %> 
-            <div id="errorAlert" class="alert alert-danger" role="alert">
-                <%= errorMessage %>
-            </div>
-        <% } %> -->
-
-
-
-*/
