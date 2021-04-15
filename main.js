@@ -67,8 +67,10 @@ router.use((req,res,next) => {
 });
 
 
-router.get("/",homeController.getHomePage);
+router.get("/",homeController.getIndexPage);
 app.use("/", router);
+
+router.get("/home",homeController.getHomePage);
 
 //router.get("/users",usersController.index, usersController.indexView);
 router.get("/users/signup",usersController.getSignupPage);

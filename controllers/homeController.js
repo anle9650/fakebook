@@ -1,7 +1,17 @@
 "use strict";
 
-exports.getHomePage = (req, res) => {
-    res.render("users/login", {
-        errorMessage: ""
-    });
-};
+module.exports = {
+
+    getIndexPage: (req,res) =>{
+        res.render("users/login", {
+            errorMessage: ""
+        });
+    },
+    getHomePage: (req,res) =>{
+        res.render("home", {
+            errorMessage: ""
+        });
+    },
+
+
+}

@@ -4,7 +4,7 @@ const mongoose = require("mongoose"),
 {Schema } = require("mongoose"),
 passportLocalMongoose =  require("passport-local-mongoose");
 const passport = require("passport");
-const userSchema = new mongoose.Schema ({ //need to fix this schema reference error use mongoose.schema
+var userSchema = new mongoose.Schema ({ 
     name:{
         first:{
             type: String,
@@ -15,15 +15,11 @@ const userSchema = new mongoose.Schema ({ //need to fix this schema reference er
             required: true,
         }
     },
-    userName:{
-        type: String,
-        required: true,
-        unqiue: true,
-    },
+    
     email:{
         type: String,
         required: true,
-        unqiue: true,
+        unique: true,
     },
     gender:{
         type: String,
@@ -46,13 +42,13 @@ const userSchema = new mongoose.Schema ({ //need to fix this schema reference er
         required: false,
         max: 250,//im not sure if max here refers to characters or..?
     },
-    securityQuestion:{
+    ddQuestions:{
         type: String,
-        required: true,
+        //required: true, some problem here when making a new user
     },
-    securityAnswer:{
+    secAnswer:{
         type: String,
-        required: true,
+        //required: true,  // some problem here when making a new user
     },
 
 },
@@ -60,8 +56,12 @@ const userSchema = new mongoose.Schema ({ //need to fix this schema reference er
     timeStamps: true,
 });
 
+
+
+
+
 userSchema.plugin(passportLocalMongoose,{
-    usernameField: "email",
+    usernameField: 'email',
 });
 
 

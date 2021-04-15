@@ -2,7 +2,35 @@
 
 const User = require("../models/user");
 const passport = require("passport");
-const { body } = require("express-validator/check");
+//const { body } = require("express-validator/check");
+
+
+
+
+
+let getUserParams = body => {
+    return {
+        name:{
+            first: body.first,
+            last: body.last,
+        },
+        //userName: body.userName,
+        email: body.email,
+        gender: body.gender,
+        DOB: body.DoB,
+        city: body.city,
+        state: body.state,
+        biography: body.bio,
+        securityQuestion: body.ddQuestions,
+        securityAnswer: body.secAnswer,
+    };
+};
+
+
+
+
+
+
 
 // reminder to uncomment flashes at some point
 module.exports = {
@@ -18,31 +46,19 @@ module.exports = {
     create: (req, res, next) => {
         if(req.skip) return next();
         
-        let newUser = new User({
-            name:{
-                first: body.first,
-                last: body.last,
-            },
-            userName: body.userName,
-            email: body.email,
-            gender: body.gender,
-            DOB: body.DoB,
-            city: body.city,
-            state: body.state,
-            biography: body.bio,
-            securityQuestion: body.ddQuestions,
-            securityAnswer: body.secAnswer,
-        });
+        let newUser = getUserParams(req.body);
 
 
         User.register(newUser, req.body.password, (error, user)=> {
             if(user){
                 //req.flash("success","User Account successfully created!");
+                console.log("successfully made user account!");
                 res.locals.redirect = "/users";
                 next();
             }
             else{
                 //req.flash("error",`failed to create user account: ${error.message}`);
+                console.log(`failed to make user Account: ${error.message}`);
                 res.locals.redirect = "/users/new";
                 next();
             }
@@ -53,32 +69,32 @@ module.exports = {
 
     validate: (req,res,next) => {
 
-        req.sanitizeBody("email").normalizeEmail({
+        /*req.sanitizeBody("email").normalizeEmail({
             all_lowercase: true,
-        }).trim();
+        }).trim();*/
 
-        req.check("name.first").notEmpty();
-        req.check("name.last").notEmpty();
-        req.check("userName").notEmpty();
+        req.check("first").notEmpty();
+        req.check("last").notEmpty();
+        //req.check("username").notEmpty();
         req.check("gender").notEmpty();
         req.check("DoB").notEmpty();
         req.check("state").notEmpty();
-        req.check("securityQuestion").notEmpty();
-        req.check("securityAnswer").notEmpty();
-        
+        req.check("ddQuestions").notEmpty();
+        req.check("secAnswer").notEmpty();
 
-
-        req.check("email","email is not valid!").isEmail();
+        //req.check("email","email is not valid!").isEmail();
         req.check("password","password cannot be empty").notEmpty();
         req.getValidationResult().then((error) => {
             if(!error.isEmpty()){
                 let messages = error.array().map( e => e.msg);
                 //req.flash("error",messages.join(" and "));
+                console.log("very nice word error messages:",messages);
                 req.skip = true;
                 res.locals.redirect = "/users/signup";
                 next();
             }
             else{
+                console.log("passed validation");
                 next();
             }
         });
@@ -86,7 +102,7 @@ module.exports = {
     authenticate: passport.authenticate("local", {
         failureRedirect: "/users/login",
         failureFlash: "Login failed! check your email or password! ",
-        successRedirect: "/",
+        successRedirect: "/home",
         sucessFlash: "Logged in!",
     }),
 
@@ -126,7 +142,7 @@ module.exports = {
                 first: body.first,
                 last: body.last,
             },
-            userName: body.userName,
+            //userName: body.userName,
             email: body.email,
             gender: body.gender,
             DOB: body.DoB,
