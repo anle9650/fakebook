@@ -1,0 +1,164 @@
+<h1>Edit profile.</h1>
+<section class="container">
+    <h2 class="alert alert-primary">Tell us about yourself.</h2>
+    <article>
+        <form action="<%= `/users/${user._id}/update?_method=PUT`%>" method="post" novalidate>
+            <fieldset class="border">
+                <legend class="w-auto">Your information</legend>
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label for="txtFirstName" class="col-form-label">
+                            First name
+                        </label>
+                        <input type="text" id="txtFirstName" name="first" value="<%= user.name.first %>" required class="form-control "
+                            placeholder="First Name">
+                        <div id="txtFirstNameErr" class="invisible alert alert-danger"></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="txtLastName" class="col-form-label">
+                            Last name
+                        </label>
+                        <input type="text" id="txtLastName" name="last" value="<%= user.name.last %>" required class="form-control "
+                            placeholder="Last Name">
+                        <div id="txtLastNameErr" class="invisible alert alert-danger"></div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-6">
+                        <label for="txtUserName" class="col-form-label">
+                            Create a username
+                        </label>
+
+                        <input type="text" id="txtUserName" name="userName" value="<%= user.userName %>" required class="form-control "
+                            placeholder="Username">
+                        <div id="txtUserNameErr" class="invisible alert alert-danger"></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="txtEmail" class="col-form-label">
+                            Email
+                        </label>
+                        <input type="email" id="txtEmail" name="email" value="<%= user.email %>" required class="form-control "
+                            placeholder="name@example.com">
+                        <div id="txtEmailErr" class="invisible alert alert-danger"></div>
+                    </div>
+
+                </div>
+
+                <fieldset class="row form-group">
+                    <div class="col-md-6">
+                        <div name="gender" class="col-form-label">Gender</div>
+                        <div class="form-check">
+                            <input class="invisible" value="<%= user.gender %>">
+                            <input type="radio" id="rbMale" name="gender" value="male" class="form-check-input">
+                            <label for="rbMale" class="form-check-label">Male</label>
+                            <div id="rbMaleErr" class="invisible alert alert-danger"></div>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" id="rbFemale" name="gender" value="female" class="form-check-input">
+                            <label for="rbFemale" class="form-check-label">Female</label>
+                            <div id="rbFemaleErr" class="invisible alert alert-danger"></div>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" id="rbOther" name="gender" value="other" class="form-check-input">
+                            <label for="rbOther" class="form-check-label">Other</label>
+                            <div id="rbOtherErr" class="invisible alert alert-danger"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="txtDOB" class="col-form-label">
+                            Date of birth
+                        </label>
+                        <input type="date" id="txtDOB" name="DoB" value="<%= user.DOB %>" required class="form-control" placeholder="Date">
+                        <div id="txtDOBErr" class="invisible alert alert-danger"></div>
+                    </div>
+                </fieldset>
+
+                <div class="row form-group">
+                    <div class="col-md-6">
+                        <label for="txtCity" class="col-form-label">
+                            City
+                        </label>
+                        <input type="text" id="txtCity" name="city" class="form-control " value="<%= user.city %>" placeholder="City" required>
+                        <div id="txtCityErr" class="invisible alert alert-danger"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="txtState" class="col-form-label">
+                            State
+                        </label>
+                        <input type="text" id="txtState" name="state" class="form-control " value="<%= user.state %>" placeholder="State" required>
+                        <div id="txtStateErr" class="invisible alert alert-danger"></div>
+                    </div>
+                </div>
+
+                <fieldset class="border">
+                    <legend class="w-auto">Write a biography (optional)</legend>
+                    <div class="row form-group">
+                        <div class="col-sm-12">
+                            <input type="text" id="txtBio" name="bio" class="form-control" value="<%= user.biography %>"
+                                placeholder="Tell us a little more about yourself.">
+                            <div id="txtBioErr" class="invisible alert alert-danger"></div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="border">
+                    <legend class="w-auto">Make a password</legend>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="txtPassword" class="col-form-label">
+                                Password
+                            </label>
+                            <input type="password" id="txtPassword" name="password" required class="form-control"
+                                placeholder="Password">
+                            <div class="invisible alert alert-danger" id="txtPasswordErr"></div>
+                        </div>
+    
+                        <div class="col-md-6">
+                            <label for="txtConfirmPassword" class="col-form-label">
+                                Confirm Password
+                            </label>
+                            <input type="password" id="txtConfirmPassword" name="txtConfirmPassword" required
+                                class="form-control " placeholder="Confirm password">
+                            <div class="invisible alert alert-danger" id="txtConfirmPasswordErr"></div>
+                        </div>
+                    </div>
+    
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <label for="ddQuestions" class="col-form-label">
+                                Choose a security question
+                            </label>
+                            <select id="ddQuestions" name="ddQuestions" class="form-control " required
+                                onchange="displaySecurityAnswer()">
+                                <option label="Choose a question." value="<%= user.securityQuestion %>"></option>
+                                <option value="ddMother">What is your mother's maiden name?</option>
+                                <option value="ddPet">What is the name of your favorite pet?</option>
+                                <option value="ddSchool">What was the first school you attended?</option>
+                            </select>
+                        </div>
+    
+                        <div class="invisible col-md-6" id="divSecurityAnswer">
+                            <label for="txtAnswer" class="col-form-label">
+                                Answer
+                            </label>
+                            <input type="text" id="txtAnswer" name="securityAnswer" value="<%= user.securityAnswer %>" required class="form-control "
+                                placeholder="Answer to security question">
+                            <div id="txtAnswerErr" class="invisible alert alert-danger"></div>
+                        </div>
+                    </div>
+                </fieldset>
+
+            </fieldset>
+
+            <p>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </p>
+        </form>
+        
+    </article>
+</section>

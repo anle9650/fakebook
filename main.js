@@ -77,8 +77,8 @@ router.get("/users/login",usersController.getLoginPage);
 router.post("/users/login",usersController.authenticate);
 router.get("/users/logout",usersController.logout,usersController.redirectView);
 //router.get("/users/:id", usersController.show, usersController.showView);
-//router.get("/users/:id/edit", usersController.edit);
-//router.put("/users/:id/update", usersController.validate,usersController.update, usersController.redirectView);
+router.get("/users/:id/edit", usersController.edit);
+router.put("/users/:id/update", usersController.validate,usersController.update, usersController.redirectView);
 //router.delete("/users/:id/delete", usersController.delete, usersController.redirectView);
 
 app.use(errorController.pageNotFoundError);

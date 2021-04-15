@@ -61,17 +61,16 @@ module.exports = {
             all_lowercase: true
         }).trim();
         req.check("email", "Email is invalid").isEmail();
-
-        req.check("first").notEmpty();
-        req.check("last").notEmpty();
-        req.check("userName").notEmpty();
-        req.check("gender").notEmpty();
-        req.check("DoB").notEmpty();
-        req.check("state").notEmpty();
-        req.check("ddQuestions").notEmpty();
-        req.check("securityAnswer").notEmpty();
-
+        req.check("first", "First name cannot be empty").notEmpty();
+        req.check("last", "Last name cannot be empty").notEmpty();
+        req.check("userName", "Username cannot be empty").notEmpty();
+        req.check("gender", "Gender cannot be empty").notEmpty();
+        req.check("DoB", "Date of birth cannot be empty").notEmpty();
+        req.check("state", "State cannot be empty").notEmpty();
+        req.check("ddQuestions", "Security question cannot be empty").notEmpty();
+        req.check("securityAnswer", "Answer cannot be empty").notEmpty();
         req.check("password","password cannot be empty").notEmpty();
+        
         req.getValidationResult().then((error) => {
             if(!error.isEmpty()){
                 let messages = error.array().map( e => e.msg);
@@ -95,7 +94,7 @@ module.exports = {
 
     logout : (req,res,next) => {
         req.logout();
-        //req.flash("success","you have been logged out!");
+        req.flash("success","you have been logged out!");
         res.locals.redirect = "/";
         next();
     },
@@ -110,7 +109,7 @@ module.exports = {
         
         User.findById(userId)
             .then(user => {
-                res.render("users/edit", { user: user });// this doesnt exist yet
+                res.render("users/edit", { user: user });
             })
             .catch(error => {
                 
