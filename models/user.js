@@ -4,6 +4,7 @@ const mongoose = require("mongoose"),
     {Schema} = mongoose,
     passport = require("passport"),
     passportLocalMongoose = require("passport-local-mongoose"),
+    Post = require("./post"),
     userSchema = new Schema({
     name:{
         first:{

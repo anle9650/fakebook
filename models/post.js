@@ -2,7 +2,7 @@
 
 const mongoose = require("mongoose"),
 {Schema} = mongoose,
-    postSchema = new Schema({
+postSchema = new Schema({
     
     content: {
         type: String,
@@ -15,4 +15,4 @@ const mongoose = require("mongoose"),
 });
 
 
-module.exports = mongoose.model("Post", userSchema);
+module.exports = mongoose.model("Post", postSchema);
