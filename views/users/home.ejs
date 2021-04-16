@@ -36,7 +36,7 @@
             
              <%   users.forEach(user=>{ %>
                     <div class="border rounded">
-                        <a href="<%= `/users/$user._id` %>">                            
+                        <a href="<%= `/users/${user._id}` %>">                            
                             <%= user.fullName %></a>
                     </div>
                 <% }); %>
