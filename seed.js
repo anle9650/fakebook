@@ -1,9 +1,4 @@
 const mongoose = require("mongoose"),
-    express = require("express"),
-    router =  express.Router(),
-    passport = require("passport"),
-    expressSession = require("express-session"),
-    cookieParser = require("cookie-parser"),
     User = require("./models/user");
 
 mongoose.connect(
@@ -12,22 +7,6 @@ mongoose.connect(
 );
 
 mongoose.connection;
-
-router.use(cookieParser("fakebook_passcode"));
-router.use(expressSession({
-    secret: "fakebook_passcode",
-    cookie: {
-        maxAge: 360000
-    },
-    resave: false,
-    saveUninitialized: false
-}));
-
-router.use(passport.initialize());
-router.use(passport.session());
-passport.use(User.createStrategy());
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 var users = [
     {
@@ -86,8 +65,17 @@ User.deleteMany()
 var commands = [];
 
 users.forEach((user) => {
-    commands.push(User.register(user, "strongpassword123")
-    )});
+    commands.push(User.register(user, "strongpassword123", (error, user)=> {
+        if(user){
+            req.flash("success", "User Account successfully created!");
+            console.log("Successfully created user account!");
+        }
+        else{
+            req.flash("error",`failed to create user account: ${error.message}`);
+            console.log(`failed to make user Account: ${error.message}`);
+        }
+    }));
+});
 
 Promise.all(commands)
     .then(r => {
