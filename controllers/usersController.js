@@ -70,6 +70,7 @@ module.exports = {
         req.check("ddQuestions", "Security question cannot be empty").notEmpty();
         req.check("securityAnswer", "Answer cannot be empty").notEmpty();
         req.check("password","password cannot be empty").notEmpty();
+        req.check("confirmPassword", "Passwords must match.").equals(req.body.password);
 
         req.getValidationResult().then((error) => {
             if(!error.isEmpty()){
