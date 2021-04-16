@@ -43,7 +43,8 @@ now to run the application will you want to use `npm start` in the folder. Then 
 #### Design 
   For the design we implemented crud actions to the application to easily allow users to be created, edited, updated, deleted, etc. We also use cookies,express sessions, passport and flashing to handle user accounts/login/logout. we also added the new ability for users to make posts and for the posts to appear on the home screen. The posts consists essentially of simple schema models,controllers, and some ejs to display it properly. Large part of the functionality comes from mongoose and passport and their interfaces which allows for things such as simple user authentication and interaction with the database and application.  
 
- 
+ ![image](https://user-images.githubusercontent.com/78400904/114970723-33d6bb80-9e38-11eb-91d6-300f3b772b78.png)
+
 
 ## Contributions
 
