@@ -55,7 +55,6 @@ module.exports = {
     },
 
     validate: (req,res,next) => {
-
         req.sanitizeBody("email").normalizeEmail({
             all_lowercase: true
         }).trim();

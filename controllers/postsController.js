@@ -16,25 +16,21 @@ module.exports = {
             currentUser = req.user;
         
         Post.create(newPost)
-        .then(post => {
-            newPost = post;
-        })
-        .then(() => {
-            newPost.user = currentUser;
-            newPost.save();
-        })
-        .then(() => {
-            currentUser.posts.push(newPost);
-            currentUser.save();
-        })
-        .then(() => {
-            res.locals.redirect = "/home"
-            next();
-        })
-        .catch(error => {
-            console.log(`there was an error making a post: ${error.message}`);
-            next(error);
-        });
+            .then(post => {
+                newPost = post;
+            })
+            .then(() => {
+                newPost.user = currentUser;
+                newPost.save();
+            })
+            .then(() => {
+                res.locals.redirect = "/home"
+                next();
+            })
+            .catch(error => {
+                console.log(`there was an error making a post: ${error.message}`);
+                next(error);
+            });
     },
 
     delete: (req, res, next) => {
@@ -45,7 +41,7 @@ module.exports = {
                 next();
             })
             .catch(error => {
-                console.log(`error fetching user by id: ${error.message}`);
-            })
+                console.log(`error fetching post by id: ${error.message}`);
+            });
     }
 }
