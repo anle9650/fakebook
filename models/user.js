@@ -50,11 +50,11 @@ const mongoose = require("mongoose"),
     },
     securityQuestion:{
         type: String,
-        required: true //some problem here when making a new user
+        required: true
     },
     securityAnswer:{
         type: String,
-        required: true  // some problem here when making a new user
+        required: true
     },
 
     posts: [{type: Schema.Types.ObjectId, ref: Post}],
