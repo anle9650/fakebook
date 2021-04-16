@@ -62,6 +62,11 @@
                         <p>
                             <button type="submit" class="btn btn-light">Like</button>
                             <button type="submit" class="btn btn-light">Comment</button>
+                            <% if (post.user == currentUser) { %>
+                                <a href="<%= `/posts/${post._id}/delete?_method=DELETE` %>">
+                                    Delete
+                                </a> 
+                            <% } %>
                         </p>
                     <% }); %>
                 </form>

@@ -1,4 +1,9 @@
 const mongoose = require("mongoose"),
+    express = require("express"),
+    router =  express.Router(),
+    passport = require("passport"),
+    expressSession = require("express-session"),
+    cookieParser = require("cookie-parser"),
     User = require("./models/user");
 
 mongoose.connect(
@@ -8,10 +13,28 @@ mongoose.connect(
 
 mongoose.connection;
 
+router.use(cookieParser("fakebook_passcode"));
+router.use(expressSession({
+    secret: "fakebook_passcode",
+    cookie: {
+        maxAge: 360000
+    },
+    resave: false,
+    saveUninitialized: false
+}));
+
+router.use(passport.initialize());
+router.use(passport.session());
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 var users = [
     {
-        firstName: "Andy",
-        lastName: "Le",
+        name: {
+            first:"Andy",
+            last: "Le"
+        },
         userName: "Andy.Le",
         email: "andy.le@ucdenver.edu",
         gender: "male",
@@ -19,13 +42,14 @@ var users = [
         city: "Broomfield",
         state: "CO",
         biography: "",
-        password: "strongpassword123",
         securityQuestion: "What is the name of your first pet?",
-        answer: "Oreo"
+        securityAnswer: "Oreo"
     },
     {
-        firstName: "Jacques",
-        lastName: "Steyn",
+        name: {
+            first:"Jacques",
+            last: "Steyn"
+        },
         userName: "Jacques.Steyn",
         email: "jacques.steyn@ucdenver.edu",
         gender: "male",
@@ -33,13 +57,14 @@ var users = [
         city: "colorado",
         state: "CO",
         biography: "asdasddsa",
-        password: "strongpassword1234",
         securityQuestion: "What is the name of your first pet?",
-        answer: "jebidiah"
+        securityAnswer: "jebidiah"
     },
     {
-        firstName: "test",
-        lastName: "dummy",
+        name: {
+            first: "test",
+            last: "dummy"
+        },
         userName: "dummy.test",
         email: "dummy.test@fakebook.com",
         gender: "male",
@@ -47,9 +72,8 @@ var users = [
         city: "New York",
         state: "New York",
         biography: "im the test dummy",
-        password: "dummyPassword1234",
         securityQuestion: "What is the name of your dummy pet?",
-        answer: "sprinkles"
+        securityAnswer: "sprinkles"
     }
 ];
 
@@ -62,7 +86,8 @@ User.deleteMany()
 var commands = [];
 
 users.forEach((user) => {
-    commands.push(User.create(user))});
+    commands.push(User.register(user, "strongpassword123")
+    )});
 
 Promise.all(commands)
     .then(r => {

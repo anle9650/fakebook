@@ -25,6 +25,10 @@ module.exports = {
             });
     },
     indexView: (req, res) => {
-        res.render("home/index");
+        if (req.isAuthenticated()) {
+            res.render("home/index");
+        } else {
+            res.render("users/login");
+        }
     }
 }
