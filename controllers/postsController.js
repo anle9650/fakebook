@@ -18,7 +18,7 @@ module.exports = {
         if(req.skip) return next();
         let newPost = getPostParams(req.body);
         console.log("asdasdasdasdasdasdasasdasdas");
-        post.create(newPost)
+        Post.create(newPost)
         .then(post => {
             res.locals.post = post;
             res.locals.redirect = "/home"

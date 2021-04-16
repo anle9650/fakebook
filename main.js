@@ -82,7 +82,7 @@ router.get("/users/:id/edit", usersController.edit);
 router.put("/users/:id/update", usersController.validate,usersController.update, usersController.redirectView);
 //router.delete("/users/:id/delete", usersController.delete, usersController.redirectView);
 
-router.post("/posts/create",postsController.create);
+router.post("/posts/create",postsController.create,usersController.home,postsController.home,usersController.getHome);
 
 
 
