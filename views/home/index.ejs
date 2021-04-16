@@ -62,7 +62,8 @@
                         <p>
                             <button type="submit" class="btn btn-light">Like</button>
                             <button type="submit" class="btn btn-light">Comment</button>
-                            <% if (post.user == currentUser) { %>
+                            <% if (parseInt(post.user._id) === parseInt(currentUser._id)) { %>
+                                <% console.log(`${post.user._id}, ${currentUser._id}`) %>
                                 <a href="<%= `/posts/${post._id}/delete?_method=DELETE` %>">
                                     Delete
                                 </a> 
