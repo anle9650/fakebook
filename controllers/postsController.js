@@ -35,5 +35,17 @@ module.exports = {
             console.log(`there was an error making a post: ${error.message}`);
             next(error);
         });
+    },
+
+    delete: (req, res, next) => {
+        let postId = req.params.id;
+        Post.findByIdAndRemove(postId)
+            .then(() => {
+                res.locals.redirect = "/home";
+                next();
+            })
+            .catch(error => {
+                console.log(`error fetching user by id: ${error.message}`);
+            })
     }
 }

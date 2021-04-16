@@ -81,9 +81,7 @@ router.put("/users/:id/update", usersController.validate,usersController.update,
 //router.delete("/users/:id/delete", usersController.delete, usersController.redirectView);
 
 router.post("/posts/create",postsController.create, usersController.redirectView);
-
-
-
+router.delete("/posts/:id/delete", postsController.delete, usersController.redirectView);
 
 app.use(errorController.pageNotFoundError);
 app.use(errorController.internalServerError);
