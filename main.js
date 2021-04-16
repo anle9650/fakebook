@@ -69,7 +69,7 @@ router.use((req,res,next) => {
 router.get("/",homeController.getIndexPage);
 app.use("/", router);
 
-router.get("/home",usersController.home,usersController.getHome);
+router.get("/home",usersController.home,postsController.home,usersController.getHome,);
 
 //router.get("/users",usersController.index, usersController.indexView);
 router.get("/users/new",usersController.new);

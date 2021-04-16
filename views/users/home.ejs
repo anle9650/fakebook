@@ -42,35 +42,6 @@
                 <% }); %>
             
             
-            
-            <!--
-            <div class="border rounded">
-                <a href="">Elon Musk</a>
-                <p>
-                    <img class="rounded" src="images/profilepic1.jpg" alt="profilepic1" width=75 height="100">
-                    <button type="submit" class="btn btn-light">Add</button>
-                    <button type="submit" class="btn btn-light">Remove</button>
-                </p>
-            </div>
-            
-            <div class="border rounded">
-                <a href="">McLovin'</a>
-                <p>
-                    <img class="rounded" src="images/profilepic2.jpg" alt="profilepic1" width=75 height="75">
-                    <button type="submit" class="btn btn-light">Add</button>
-                    <button type="submit" class="btn btn-light">Remove</button>
-                </p>
-            </div>
-            
-            <div class="border rounded">
-                <a href="">Alan Turing</a>
-                <p>
-                    <img class="rounded" src="images/profilepic3.jpg" alt="profilepic3" width=75 height="75">
-                    <button type="submit" class="btn btn-light">Add</button>
-                    <button type="submit" class="btn btn-light">Remove</button>
-                </p>
-            </div>
-            -->
         </fieldset>
 
         
@@ -79,6 +50,11 @@
                 <legend class="w-auto">Recent posts</legend>
                 <form>
 
+                    <%   posts.forEach(post=>{ %>
+                        <div class="border rounded">
+                            <p><%= post.content %></p>                           
+                        </div>
+                    <% }); %>
                     
                        
 

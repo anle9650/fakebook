@@ -2,6 +2,7 @@
 
 const User = require("../models/user");
 const passport = require("passport");
+const Post = require("../models/post");
 //const { body } = require("express-validator/check");
 
 let getUserParams = body => {

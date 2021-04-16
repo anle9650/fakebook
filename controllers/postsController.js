@@ -1,7 +1,7 @@
 "use strict";
 
 
-const post = require("../models/post");
+const Post = require("../models/post");
 
 let getPostParams = body => {
     return {
