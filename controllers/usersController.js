@@ -39,7 +39,6 @@ module.exports = {
         
         let newUser = getUserParams(req.body);
 
-
         User.register(newUser, req.body.password, (error, user)=> {
             if(user){
                 req.flash("success", "User Account successfully created!");
@@ -143,7 +142,7 @@ module.exports = {
     show: (req, res, next) => {
         //let userId= req.params.id;
         let userId= req.params.id;
-        console.log("the id:",userId);
+        //console.log("the id:",userId);
         User.findById(userId)
         .then(user => {
             res.locals.user = user;
@@ -171,7 +170,7 @@ module.exports = {
             })
     },
 
-
+  
     home: (req, res, next) => {
         User.find()
             .then(users => {

@@ -10,10 +10,12 @@ mongoose.connection;
 
 var users = [
     {
-        firstName: "Andy",
-        lastName: "Le",
-        userName: "Andy.Le",
+        name:{
+            first: "Andy",
+            last: "Le",
+        },     
         email: "andy.le@ucdenver.edu",
+        userName: "anle",
         gender: "male",
         DOB: "03/23/1993",
         city: "Broomfield",
@@ -21,35 +23,39 @@ var users = [
         biography: "",
         password: "strongpassword123",
         securityQuestion: "What is the name of your first pet?",
-        answer: "Oreo"
+        securityAnswer: "Oreo"
     },
     {
-        firstName: "Jacques",
-        lastName: "Steyn",
-        userName: "Jacques.Steyn",
-        email: "jacques.steyn@ucdenver.edu",
+        name:{
+            first: "test",
+            last: "dummy",
+        },     
+        email: "test@dummy.edu",
+        userName: "testdummy",
         gender: "male",
-        DOB: "02/1/1000",
-        city: "colorado",
+        DOB: "04/21/1995",
+        city: "Broomfield",
         state: "CO",
-        biography: "asdasddsa",
-        password: "strongpassword1234",
+        biography: "",
+        password: "strongpassword123",
         securityQuestion: "What is the name of your first pet?",
-        answer: "jebidiah"
+        securityAnswer: "Sprinkles"
     },
     {
-        firstName: "test",
-        lastName: "dummy",
-        userName: "dummy.test",
-        email: "dummy.test@fakebook.com",
+        name:{
+            first: "Jacques",
+            last: "Steyn",
+        },     
+        email: "jacques.steyn@ucdenver.edu",
+        userName: "jsteyn",
         gender: "male",
-        DOB: "4/3/1200",
-        city: "New York",
-        state: "New York",
-        biography: "im the test dummy",
-        password: "dummyPassword1234",
-        securityQuestion: "What is the name of your dummy pet?",
-        answer: "sprinkles"
+        DOB: "04/20/2000",
+        city: "denver",
+        state: "CO",
+        biography: "asdasdasd",
+        password: "strongpassword123",
+        securityQuestion: "What is the name of your first pet?",
+        securityAnswer: "jebidiah"
     }
 ];
 
