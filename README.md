@@ -34,6 +34,15 @@ now you will want to run the `seed.js` file to seed the mongo database with some
   
 In terms of actual design choices, we opted to use layouts with ejs such that we can easily render multiple different pages within the main body content of the page while perserving the header/footer and navigation type menus throughout the site. This is also essentially how the 'login' works right now... it pretty much checks to see if a user with the specified email and password is in the database and if they are it 'logs' you in (by displaying the /home page ) and if it is not, it will display an error message. To do many of these functions we use the mongoose library to easily handle the database data within the program for functionality like signing up and logging in.
 
+### Assignment 4
+#### To install and setup this  version of the application
+First pull or clone the latest version from the repo(see the installation section above). Then make sure that you have the npm package manager(you can use `npm --version` to see).You will also likely want to install mongoDB https://www.mongodb.com/try if you want to see the login/signup functionality. Next you will want to do a `npm install` inside of the cloned folder to automatically install all the needed dependencies for it to work.
+  
+now to run the application will you want to use `npm start` in the folder. Then the next step is to navigate to `localhost:3000`, here you will need to make a new user account by clicking on the `create an account` button in green. You will need to make an account in this because we could not get the seed file to work properly with passwords. once you have created an account you can go to `localhost:3000/users/login` to login. Once you are logged in you will see the `/home` page, which on the top left shows who is logged in(you can click on it and see your profile), you can click on `edit profile` to edit your profile and `logout` to logout. In the center left of the screen you will see what  users are on the platform and you can click on their names to view their profiles also. Then in the center of the screen you will see the prompt to `create a post` and also posts that have been made will be underneath it.
+
+#### Design 
+  For the design we implemented crud actions to the application to easily allow users to be created, edited, updated, deleted, etc. We also use cookies,express sessions, passport and flashing to handle user accounts/login/logout. we also added the new ability for users to make posts and for the posts to appear on the home screen. The posts consists essentially of simple schema models,controllers, and some ejs to display it properly. Large part of the functionality comes from mongoose and passport and their interfaces which allows for things such as simple user authentication and interaction with the database and application.  
+
  
 
 ## Contributions
