@@ -65,11 +65,9 @@ router.use((req,res,next) => {
     next();
 });
 
-
-router.get("/",homeController.getIndexPage);
 app.use("/", router);
 
-router.get("/home",usersController.home,postsController.home,usersController.getHome,);
+router.get("/home", homeController.index, homeController.indexView);
 
 //router.get("/users",usersController.index, usersController.indexView);
 router.get("/users/new",usersController.new);
@@ -82,7 +80,7 @@ router.get("/users/:id/edit", usersController.edit);
 router.put("/users/:id/update", usersController.validate,usersController.update, usersController.redirectView);
 //router.delete("/users/:id/delete", usersController.delete, usersController.redirectView);
 
-router.post("/posts/create",postsController.create,usersController.home,postsController.home,usersController.getHome);
+router.post("/posts/create",postsController.create, usersController.redirectView);
 
 
 

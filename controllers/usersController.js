@@ -3,7 +3,6 @@
 const User = require("../models/user");
 const passport = require("passport");
 const Post = require("../models/post");
-//const { body } = require("express-validator/check");
 
 let getUserParams = body => {
     return {
@@ -23,7 +22,6 @@ let getUserParams = body => {
     };
 };
 
-// reminder to uncomment flashes at some point
 module.exports = {
     getLoginPage: (req,res) =>{
 
@@ -97,7 +95,7 @@ module.exports = {
     logout : (req,res,next) => {
         req.logout();
         req.flash("success","you have been logged out!");
-        res.locals.redirect = "/";
+        res.locals.redirect = "/users/login";
         next();
     },
     redirectView: (req, res, next) => {
@@ -131,7 +129,7 @@ module.exports = {
         })
             .then(user => {
                 res.locals.user = user;
-                res.locals.redirect = `/users/${user._id}`;// doesnt exist yet
+                res.locals.redirect = `/users/${user._id}`;
                 next();
             })
             .catch(error => {  
@@ -141,9 +139,7 @@ module.exports = {
     },
 
     show: (req, res, next) => {
-        //let userId= req.params.id;
         let userId= req.params.id;
-        console.log("the id:",userId);
         User.findById(userId)
         .then(user => {
             res.locals.user = user;
@@ -169,24 +165,6 @@ module.exports = {
             .catch(error => {
                 console.log(`error fetching user by id: ${error.message}`);
             })
-    },
-
-
-    home: (req, res, next) => {
-        User.find()
-            .then(users => {
-                res.locals.users = users;
-                next();
-            })
-            .catch(error => {
-
-                console.log(`error fetching user data: ${error.message}`);
-                next(error);
-            })
-    },
-
-    getHome: (req,res) =>{
-        res.render("users/home");
-    },
+    }
 
 };// end of module.exports 

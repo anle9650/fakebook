@@ -51,9 +51,14 @@
                 <form>
 
                     <%   posts.forEach(post=>{ %>
-                        <div class="border rounded">
+                        <a href="<%= `/users/${post.user._id}` %>"><%= post.user.userName %>(<%= post.user.fullName %>)</a>
+                        <div class="border rounded post">
                             <p><%= post.content %></p>                           
                         </div>
+                        <p>
+                            <button type="submit" class="btn btn-light">Like</button>
+                            <button type="submit" class="btn btn-light">Comment</button>
+                        </p>
                     <% }); %>
                     
                        
