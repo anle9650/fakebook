@@ -11,9 +11,6 @@ let getPostParams = body => {
 
 
 
-
-
-
 module.exports = {
 
 
@@ -33,6 +30,21 @@ module.exports = {
             next(error);
         })
         
+    },
+    home: (req, res, next) => {
+        Post.find()
+            .then(posts => {
+                res.locals.posts = posts;
+                next();
+            })
+            .catch(error => {
+
+                console.log(`error fetching post data: ${error.message}`);
+                next(error);
+            });
+    },
+    homeView: (req, res) => {
+        res.render("../views/home",{posts: res.locals.posts});
     },
 
 
