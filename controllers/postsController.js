@@ -10,8 +10,6 @@ let getPostParams = body => {
     };
 };
 
-
-
 module.exports = {
     create: (req, res, next) => {
         var newPost = getPostParams(req.body),

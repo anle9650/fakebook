@@ -46,7 +46,7 @@ const mongoose = require("mongoose"),
     biography:{
         type: String,
         required: false,
-        max: 250//im not sure if max here refers to characters or..?
+        max: 250
     },
     securityQuestion:{
         type: String,
