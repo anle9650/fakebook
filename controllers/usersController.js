@@ -140,7 +140,9 @@ module.exports = {
     },
 
     show: (req, res, next) => {
+        //let userId= req.params.id;
         let userId= req.params.id;
+        console.log("the id:",userId);
         User.findById(userId)
         .then(user => {
             res.locals.user = user;
@@ -166,5 +168,24 @@ module.exports = {
             .catch(error => {
                 console.log(`error fetching user by id: ${error.message}`);
             })
-    }
+    },
+
+
+    home: (req, res, next) => {
+        User.find()
+            .then(users => {
+                res.locals.users = users;
+                next();
+            })
+            .catch(error => {
+
+                console.log(`error fetching user data: ${error.message}`);
+                next(error);
+            })
+    },
+
+    getHome: (req,res) =>{
+        res.render("users/home");
+    },
+
 };// end of module.exports 

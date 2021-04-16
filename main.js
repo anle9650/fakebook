@@ -69,7 +69,7 @@ router.use((req,res,next) => {
 router.get("/",homeController.getIndexPage);
 app.use("/", router);
 
-router.get("/home",homeController.getHomePage);
+router.get("/home",usersController.home,usersController.getHome);
 
 //router.get("/users",usersController.index, usersController.indexView);
 router.get("/users/new",usersController.new);
@@ -77,7 +77,7 @@ router.post("/users/create",usersController.validate, usersController.create, us
 router.get("/users/login",usersController.getLoginPage);
 router.post("/users/login",usersController.authenticate);
 router.get("/users/logout",usersController.logout,usersController.redirectView);
-router.get("/users/:id", usersController.show, usersController.showView);
+router.get("/users/:id", usersController.show,usersController.showView);
 router.get("/users/:id/edit", usersController.edit);
 router.put("/users/:id/update", usersController.validate,usersController.update, usersController.redirectView);
 //router.delete("/users/:id/delete", usersController.delete, usersController.redirectView);

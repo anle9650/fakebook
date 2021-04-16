@@ -33,7 +33,17 @@
         <!-- People you may know -->
         <fieldset class="border col-md-3">
             <legend class="w-auto">People you may know</legend>
-            <!-- Profile 1 -->
+            
+             <%   users.forEach(user=>{ %>
+                    <div class="border rounded">
+                        <a href="<%= `/users/$user._id` %>">                            
+                            <%= user.fullName %></a>
+                    </div>
+                <% }); %>
+            
+            
+            
+            <!--
             <div class="border rounded">
                 <a href="">Elon Musk</a>
                 <p>
@@ -42,7 +52,7 @@
                     <button type="submit" class="btn btn-light">Remove</button>
                 </p>
             </div>
-            <!-- Profile 2 -->
+            
             <div class="border rounded">
                 <a href="">McLovin'</a>
                 <p>
@@ -51,7 +61,7 @@
                     <button type="submit" class="btn btn-light">Remove</button>
                 </p>
             </div>
-            <!-- Profile 3 -->
+            
             <div class="border rounded">
                 <a href="">Alan Turing</a>
                 <p>
@@ -60,6 +70,7 @@
                     <button type="submit" class="btn btn-light">Remove</button>
                 </p>
             </div>
+            -->
         </fieldset>
 
         
@@ -68,10 +79,7 @@
                 <legend class="w-auto">Recent posts</legend>
                 <form>
 
-                    <% posts.forEach(post => { %>
-                        <p> <%= post.content %></p>   
-                    <% }); %>
-
+                    
                        
 
                             <!-- 
