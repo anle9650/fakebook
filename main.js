@@ -82,9 +82,9 @@ router.get("/users/:id/edit", usersController.edit);
 router.put("/users/:id/update", usersController.validate,usersController.update, usersController.redirectView);
 //router.delete("/users/:id/delete", usersController.delete, usersController.redirectView);
 
-router.post("/posts/create",usersController.home,postsController.create,usersController.home,postsController.home,usersController.getHome);
-// fix this routing with redirect later 
-// after it goes to /post/create it needs to go to /home
+router.post("/posts/create",postsController.create,usersController.home,postsController.home,usersController.getHome);
+
+
 
 
 app.use(errorController.pageNotFoundError);

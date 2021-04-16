@@ -2,9 +2,6 @@
 
 
 const Post = require("../models/post");
-const User = require("../models/user");
-
-
 
 let getPostParams = body => {
     return {
@@ -20,7 +17,7 @@ module.exports = {
     create: (req, res, next) => {
         if(req.skip) return next();
         let newPost = getPostParams(req.body);
-
+        console.log("asdasdasdasdasdasdasasdasdas");
         Post.create(newPost)
         .then(post => {
             res.locals.post = post;

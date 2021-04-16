@@ -10,12 +10,10 @@ mongoose.connection;
 
 var users = [
     {
-        name:{
-            first: "Andy",
-            last: "Le",
-        },     
+        firstName: "Andy",
+        lastName: "Le",
+        userName: "Andy.Le",
         email: "andy.le@ucdenver.edu",
-        userName: "anle",
         gender: "male",
         DOB: "03/23/1993",
         city: "Broomfield",
@@ -23,39 +21,35 @@ var users = [
         biography: "",
         password: "strongpassword123",
         securityQuestion: "What is the name of your first pet?",
-        securityAnswer: "Oreo"
+        answer: "Oreo"
     },
     {
-        name:{
-            first: "test",
-            last: "dummy",
-        },     
-        email: "test@dummy.edu",
-        userName: "testdummy",
-        gender: "male",
-        DOB: "04/21/1995",
-        city: "Broomfield",
-        state: "CO",
-        biography: "",
-        password: "strongpassword123",
-        securityQuestion: "What is the name of your first pet?",
-        securityAnswer: "Sprinkles"
-    },
-    {
-        name:{
-            first: "Jacques",
-            last: "Steyn",
-        },     
+        firstName: "Jacques",
+        lastName: "Steyn",
+        userName: "Jacques.Steyn",
         email: "jacques.steyn@ucdenver.edu",
-        userName: "jsteyn",
         gender: "male",
-        DOB: "04/20/2000",
-        city: "denver",
+        DOB: "02/1/1000",
+        city: "colorado",
         state: "CO",
-        biography: "asdasdasd",
-        password: "strongpassword123",
+        biography: "asdasddsa",
+        password: "strongpassword1234",
         securityQuestion: "What is the name of your first pet?",
-        securityAnswer: "jebidiah"
+        answer: "jebidiah"
+    },
+    {
+        firstName: "test",
+        lastName: "dummy",
+        userName: "dummy.test",
+        email: "dummy.test@fakebook.com",
+        gender: "male",
+        DOB: "4/3/1200",
+        city: "New York",
+        state: "New York",
+        biography: "im the test dummy",
+        password: "dummyPassword1234",
+        securityQuestion: "What is the name of your dummy pet?",
+        answer: "sprinkles"
     }
 ];
 
