@@ -1,5 +1,3 @@
-"use strict";
-
 const User = require("../models/user");
 const passport = require("passport");
 const Post = require("../models/post");
