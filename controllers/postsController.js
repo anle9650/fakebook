@@ -61,8 +61,9 @@ module.exports = {
         let currentUser = res.locals.currentUser;
 
         if (currentUser) {
+            // Filter only posts that either belong to the current user or belong to other users that the current user follows.
             let filteredPosts = res.locals.posts.filter(post => {
-                    return post.user._id.equals(currentUser._id);
+                    return (post.user._id.equals(currentUser._id) || (currentUser.follows.includes(post.user._id)));
                 });
             res.locals.posts = filteredPosts;
             next();
