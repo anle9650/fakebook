@@ -64,8 +64,13 @@ module.exports = {
             // Filter only posts that either belong to the current user or belong to other users that the current user follows.
             let filteredPosts = res.locals.posts.filter(post => {
                     return (post.user._id.equals(currentUser._id) || (currentUser.follows.includes(post.user._id)));
+                }),
+                // Map posts to indicate which posts were created by the current user.
+                mappedPosts = filteredPosts.map((post) => {
+                    let userCreated = post.user._id.equals(currentUser._id);
+                    return Object.assign(post.toObject(), {userPost: userCreated});
                 });
-            res.locals.posts = filteredPosts;
+            res.locals.posts = mappedPosts;
             next();
         } else {
             next();

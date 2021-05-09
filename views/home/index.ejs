@@ -40,20 +40,9 @@
             <fieldset class="border">
                 <legend class="w-auto">Recent posts</legend>
                 <form>
+                    <div class="postsDiv"></div>
 
-                    <% posts.forEach(post=>{ %>
-                        <a href="<%= `/users/${post.user._id}` %>"><%= post.user.userName %>(<%= post.user.fullName %>)</a>
-                        <div class="border rounded post">
-                            <p><%= post.content %></p>                           
-                        </div>
-                        <p>
-                            <button type="submit" class="btn btn-light">Like</button>
-                            <button type="submit" class="btn btn-light">Comment</button>
-                            <% if (parseInt(post.user._id) === parseInt(currentUser._id)) { %>
-                                <a href="<%= `/posts/${post._id}/delete?_method=DELETE` %>" class="btn btn-secondary btn-md active" role="button" aria-pressed="true">Delete</a>
-                            <% } %>
-                        </p>
-                    <% }); %>
+                    
                 </form>
             </fieldset>
         </div>
