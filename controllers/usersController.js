@@ -222,6 +222,28 @@ module.exports = {
         }
     },
 
+    unfollow: (req, res, next) => {
+        let userId = req.params.id,
+            currentUser = req.user;
+        
+        if (currentUser) {
+            User.findByIdAndUpdate(currentUser, {
+                $pull: {
+                    follows: userId
+                }
+            })
+                .then(() => {
+                    res.locals.success = true;
+                    next();
+                })
+                .catch(error => {
+                    next(error);
+                });
+        } else {
+            next(new Error("User must log in."));
+        }
+    },
+
     errorJSON: (error, req, res, next) => {
         let errorObject;
 

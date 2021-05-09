@@ -7,6 +7,7 @@ const router = require("express").Router(),
 
 router.get("/users", usersController.index, usersController.filterUserFollows, usersController.respondJSON);
 router.get("/users/:id/follow", usersController.follow, usersController.respondJSON);
+router.get("/users/:id/unfollow", usersController.unfollow, usersController.respondJSON);
 router.use(usersController.errorJSON);
 
 module.exports = router;
