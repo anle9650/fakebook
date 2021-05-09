@@ -41,7 +41,7 @@
                 <legend class="w-auto">Recent posts</legend>
                 <form>
 
-                    <%   posts.forEach(post=>{ %>
+                    <% posts.forEach(post=>{ %>
                         <a href="<%= `/users/${post.user._id}` %>"><%= post.user.userName %>(<%= post.user.fullName %>)</a>
                         <div class="border rounded post">
                             <p><%= post.content %></p>                           
