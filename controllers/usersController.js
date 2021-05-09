@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const passport = require("passport");
-const Post = require("../models/post");
+const jsonWebToken = require("jsonwebtoken"),
+httpStatus = require("http-status-codes");
 
 let getUserParams = body => {
     return {
@@ -21,6 +22,18 @@ let getUserParams = body => {
 };
 
 module.exports = {
+    index: (req, res, next) => {
+        User.find({})
+            .then(users => {
+                res.locals.users = users;
+                next();
+            })
+            .catch(error => {
+                console.log(`Error fetching users: ${error.message}`)
+                next(error);
+            });
+    },
+
     getLoginPage: (req,res) =>{
 
         res.render("users/login",{
@@ -162,6 +175,68 @@ module.exports = {
             .catch(error => {
                 console.log(`error fetching user by id: ${error.message}`);
             })
-    }
+    },
 
+    filterUserFollows: (req, res, next) => {
+        let currentUser = res.locals.currentUser;
+        if (currentUser) {
+            let mappedFollows = res.locals.users.map((otherUser) => {
+                let userFollows = currentUser.follows.some((followedUser) => {
+                    return followedUser.equals(otherUser._id);
+                });
+                return Object.assign(otherUser.toObject(), {following: userFollows});
+            });
+            res.locals.users = mappedFollows;
+            next();
+        } else {
+            next();
+        }
+    },
+
+    respondJSON: (req, res) => {
+        res.json({
+            status: httpStatus.OK,
+            data: res.locals
+        });
+    },
+
+    follow: (req, res, next) => {
+        let userId = req.params.id,
+            currentUser = req.user;
+        
+        if (currentUser) {
+            User.findByIdAndUpdate(currentUser, {
+                $addToSet: {
+                    follows: userId
+                }
+            })
+                .then(() => {
+                    res.locals.success = true;
+                    next();
+                })
+                .catch(error => {
+                    next(error);
+                });
+        } else {
+            next(new Error("User must log in."));
+        }
+    },
+
+    errorJSON: (error, req, res, next) => {
+        let errorObject;
+
+        if (error) {
+            errorObject = {
+                status: httpStatus.INTERNAL_SERVER_ERROR,
+                message: error.message
+            };
+        } else {
+            errorObject = {
+                status: httpStatus.INTERNAL_SERVER_ERROR,
+                message: "Unknown Error."
+            };
+        }
+
+        res.json(errorObject);
+    } 
 };// end of module.exports 

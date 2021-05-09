@@ -2,7 +2,7 @@
 <section class="container">
     <h2 class="alert alert-primary">Tell us about yourself.</h2>
     <article>
-        <form action="/users/create" method="post" novalidate>
+        <form onsubmit="return validateForm()" action="/users/create" method="post" novalidate>
             <fieldset class="border">
                 <legend class="w-auto">Your information</legend>
                 <div class="form-group row">

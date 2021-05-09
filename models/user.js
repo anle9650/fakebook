@@ -3,6 +3,7 @@ const mongoose = require("mongoose"),
     {Schema} = mongoose,
     passport = require("passport"),
     passportLocalMongoose = require("passport-local-mongoose"),
+    User = require("./user"),
     
     userSchema = new Schema({
     name:{
@@ -54,7 +55,8 @@ const mongoose = require("mongoose"),
     securityAnswer:{
         type: String,
         required: true
-    }
+    },
+    follows: [{type: Schema.Types.ObjectId, ref: User}]
 
 },
 {

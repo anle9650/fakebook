@@ -3,9 +3,10 @@ const router = require("express").Router(),
     postsController = require("../controllers/postsController");
 
 // router.post("/login", usersController.apiAuthenticate);
+// router.use(usersController.verifyJWT);
 
-// router.get("/courses", coursesController.index, coursesController.filterUserCourses, coursesController.respondJSON);
-// router.get("/courses/:id/join", coursesController.join, coursesController.respondJSON);
-// router.use(coursesController.errorJSON);
+router.get("/users", usersController.index, usersController.filterUserFollows, usersController.respondJSON);
+router.get("/users/:id/follow", usersController.follow, usersController.respondJSON);
+router.use(usersController.errorJSON);
 
 module.exports = router;
