@@ -33,19 +33,7 @@
         <!-- People you may know -->
         <fieldset class="border col-md-3">
             <legend class="w-auto">People you may know</legend>
-            
-             <%   users.forEach(user=>{ %>
-                    <div class="border rounded">
-                        <a href="<%= `/users/${user._id}` %>">                            
-                            <%= user.fullName %></a>
-                    </div>
-                    <p>
-                        <button type="submit" class="btn btn-light">Add</button>
-                        <button type="submit" class="btn btn-light">Remove</button>
-                    </p>
-                <% }); %>
-            
-            
+            <div class="usersDiv"></div>
         </fieldset>
 
         <div class="col-md-9">
