@@ -1,5 +1,3 @@
-"use strict";
-
 const mongoose = require("mongoose"),
 {Schema} = mongoose,
 User = require("./user"),

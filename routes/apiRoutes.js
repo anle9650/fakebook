@@ -10,7 +10,6 @@ router.get("/users/:id/follow", usersController.follow, usersController.respondJ
 router.get("/users/:id/unfollow", usersController.unfollow, usersController.respondJSON);
 
 router.get("/posts", postsController.index, postsController.filterUserPosts, usersController.respondJSON);
-// router.get("/posts/:id/delete", postsController.delete, usersController.respondJSON);
 
 router.use(usersController.errorJSON);
 

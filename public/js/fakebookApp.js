@@ -1,4 +1,5 @@
 $(document).ready(() => {
+    // Display users with follow/unfollow button.
     $.get(`/api/users`, (results = {}) => {
         let data = results.data;
         if (!data || !data.users) return;
@@ -16,22 +17,22 @@ $(document).ready(() => {
     .then(() => {
         addFollowButtonListener();
     });
-
+    // Display posts with delete button.
     $.get(`/api/posts`, (results = {}) => {
         let data = results.data;
         if (!data || !data.posts) return;
         data.posts.forEach((post) => {
             $(".postsDiv").append(
                 `<a href="/users/${post.user._id}">${post.user.userName} (${post.user.name.first} ${post.user.name.last})</a>
-                        <div class="border rounded post">
-                            <p>${post.content}</p>                           
-                        </div>`
+                <div class="border rounded post">
+                    <p>${post.content}</p>                           
+                </div>`
             )
             if (post.userPost) {
                 $(".postsDiv").append(
                     `<p>
                         <a href="/posts/${post._id}/delete?_method=DELETE" class="btn btn-secondary btn-md active" role="button" aria-pressed="true">Delete</a>
-                        </p>`
+                    </p>`
                 );
             }
         });
