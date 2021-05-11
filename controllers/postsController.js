@@ -36,6 +36,7 @@ module.exports = {
                 newPost.save();
             })
             .then(() => {
+                res.locals.post = newPost;
                 res.locals.redirect = "/home"
                 next();
             })
