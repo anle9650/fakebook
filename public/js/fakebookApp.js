@@ -39,7 +39,7 @@ $(document).ready(() => {
     .then(() => {
         addFollowButtonListener();
     });
-    // Display posts with delete button.
+    // Display posts with delete button next to user's post.
     $.get(`/api/posts`, (results = {}) => {
         let data = results.data;
         if (!data || !data.posts) return;
