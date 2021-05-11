@@ -54,7 +54,7 @@ module.exports = {
         // Supposed to remove all Hashtag references to a post after deleting a post, but currently doesn't work.
         Hashtag.find({ posts: { $in: [postId] } }).then(hashtags => {
             hashtags.forEach(hashtag => {
-                Hashtag.findOneAndUpdate(
+                Hashtag.findByIdAndUpdate(
                     hashtag._id,
                     { $pull: { posts: postId } },
                     { new: true }

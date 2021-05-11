@@ -37,6 +37,17 @@ $(document).ready(() => {
             }
         });
     });
+    // Display top 10 hashtags.
+    $(".hashtagsUl").html('');
+    $.get(`/api/hashtags`, (results = {}) => {
+        let data = results.data;
+        if (!data || !data.hashtags) return;
+        data.hashtags.forEach((hashtag) => {
+            $(".hashtagsUl").append(
+                `<li>${hashtag.name}</li>`
+            )
+        });
+    });
 });
 
 let addFollowButtonListener = () => {

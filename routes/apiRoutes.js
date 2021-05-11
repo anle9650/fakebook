@@ -3,8 +3,8 @@ const router = require("express").Router(),
     postsController = require("../controllers/postsController"),
     hashtagsController = require("../controllers/hashtagsController");
 
-// router.post("/login", usersController.apiAuthenticate);
-// router.use(usersController.verifyJWT);
+//router.post("/login", usersController.apiAuthenticate);
+//router.use(usersController.verifyJWT);
 
 router.get("/users", usersController.index, usersController.filterUserFollows, usersController.respondJSON);
 router.get("/users/:id/follow", usersController.follow, usersController.respondJSON);
