@@ -77,5 +77,22 @@ module.exports = {
         } else {
             next();
         }
+    },
+
+    filterUserNotifications: (req, res, next) => {
+        let currentUser = res.locals.currentUser;
+
+        if (currentUser) {
+            // Filter only posts that belong to other users that the current user follows.
+            let filteredPosts = res.locals.posts.filter(post => {
+                    return currentUser.follows.includes(post.user._id);
+                });
+            // Sort the posts in newest-first order.
+            filteredPosts.reverse();
+            res.locals.posts = filteredPosts;
+            next();
+        } else {
+            next();
+        } 
     }
 }
