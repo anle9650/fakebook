@@ -89,7 +89,7 @@ module.exports = {
                 });
             // Sort the posts in newest-first order.
             filteredPosts.reverse();
-            res.locals.posts = filteredPosts;
+            res.locals.notifications = filteredPosts;
             next();
         } else {
             next();

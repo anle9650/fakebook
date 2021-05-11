@@ -1,4 +1,25 @@
 $(document).ready(() => {
+    // Display latest notifications in modal.
+    $("#modal-button").click(() => {
+        $(".modal-body").html('');
+        $.get(`/api/notifications`, (results = {}) => {
+            let data = results.data;
+            if (!data || !data.notifications) return;
+            data.notifications.forEach((notification) => {
+                $(".modal-body").append(
+                    `<div>
+                        <h6 class="notification-user">
+                            ${notification.user.name.first} ${notification.user.name.last} posted:
+                        </h6>
+                        <div class="notification-content">
+                            ${notification.content}
+                        </div>
+                        <hr/>
+                    </div>`
+                );
+            });
+        });
+    });
     // Display users with follow/unfollow button.
     $.get(`/api/users`, (results = {}) => {
         let data = results.data;
