@@ -28,9 +28,10 @@ $(document).ready(() => {
             $(".usersDiv").append(
                 `<div>
                     <a href="/users/${user._id}">${user.name.first} ${user.name.last}</a>
-                    <button class="follow-button ${user.following ? 'following' : 'notFollowing'}" data-id="${user._id}">
+                    <button class="follow-button btn btn-light ${user.following ? 'following' : 'notFollowing'}" data-id="${user._id}">
                     ${user.following ? "Unfollow" : "Follow"}
                     </button>
+                    <hr/>
                 </div>`
             );
         });
