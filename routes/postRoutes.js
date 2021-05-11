@@ -4,6 +4,6 @@ const router = require("express").Router(),
    hashtagsController = require("../controllers/hashtagsController");
 
 router.post("/create",postsController.create, hashtagsController.add, usersController.redirectView);
-router.delete("/:id/delete", postsController.delete, usersController.redirectView);
+router.delete("/:id/delete", postsController.delete, hashtagsController.removePost, usersController.redirectView);
 
 module.exports = router;

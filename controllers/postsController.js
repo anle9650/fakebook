@@ -1,5 +1,5 @@
 const Post = require("../models/post"),
-    User = require("../models/user");
+    Hashtag = require("../models/hashtag");
 
 let getPostParams = body => {
     return {
@@ -48,6 +48,7 @@ module.exports = {
 
     delete: (req, res, next) => {
         let postId = req.params.id;
+
         Post.findByIdAndRemove(postId)
             .then(() => {
                 res.locals.redirect = "/home";

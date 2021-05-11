@@ -37,5 +37,32 @@ module.exports = {
             res.locals.redirect = "/home"
             next();
         }
+    },
+
+    filterTopHashtags: (req, res, next) => {
+        // Get the top 10 most popular hashtags.
+        let hashtags = res.locals.hashtags,
+            topHashtags = hashtags.sort((a, b) => b.posts.length - a.posts.length).slice(0, 10);
+        
+        res.locals.hashtags = topHashtags;
+        next();
+    },
+
+    removePost: (req, res, next) => {
+        let postId = req.params.id;
+
+        // Supposed to remove all Hashtag references to a post after deleting a post, but currently doesn't work.
+        Hashtag.find({ posts: { $in: [postId] } }).then(hashtags => {
+            hashtags.forEach(hashtag => {
+                Hashtag.findOneAndUpdate(
+                    hashtag._id,
+                    { $pull: { posts: postId } },
+                    { new: true }
+                )
+            })
+        }).then(() => {
+            res.locals.redirect = "/home";
+            next();
+        });
     }
 }
