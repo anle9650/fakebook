@@ -1,5 +1,6 @@
 const Post = require("../models/post"),
-    Hashtag = require("../models/hashtag");
+    Hashtag = require("../models/hashtag"),
+    httpStatus = require("http-status-codes");
 
 let getPostParams = body => {
     return {
@@ -94,5 +95,30 @@ module.exports = {
         } else {
             next();
         } 
+    },
+
+    respondJSON: (req, res) => {
+        res.json({
+            status: httpStatus.OK,
+            data: res.locals
+        });
+    },
+
+    errorJSON: (error, req, res, next) => {
+        let errorObject;
+
+        if (error) {
+            errorObject = {
+                status: httpStatus.INTERNAL_SERVER_ERROR,
+                message: error.message
+            };
+        } else {
+            errorObject = {
+                status: httpStatus.INTERNAL_SERVER_ERROR,
+                message: "Unknown Error."
+            };
+        }
+
+        res.json(errorObject);
     }
 }
