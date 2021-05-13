@@ -29,7 +29,7 @@ $(document).ready(() => {
                 `<div>
                     <a href="/users/${user._id}">${user.name.first} ${user.name.last}</a>
                     <button class="follow-button btn btn-light ${user.following ? 'following' : 'notFollowing'}" data-id="${user._id}">
-                    ${user.following ? "Unfollow" : "Follow"}
+                        ${user.following ? "Unfollow" : "Follow"}
                     </button>
                     <hr/>
                 </div>`
@@ -39,7 +39,7 @@ $(document).ready(() => {
     .then(() => {
         addFollowButtonListener();
     });
-    // Display posts with delete button next to user's post.
+    // Display posts with delete button next to user's posts.
     $.get(`/api/posts`, (results = {}) => {
         let data = results.data;
         if (!data || !data.posts) return;
