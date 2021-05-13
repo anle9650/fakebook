@@ -238,12 +238,21 @@ module.exports = {
 
     filterUserFollows: (req, res, next) => {
         let currentUser = res.locals.currentUser;
+        var users = res.locals.users;
+
         if (currentUser) {
-            let mappedFollows = res.locals.users.map((otherUser) => {
+            // Remove the current user from the list of users.
+            for (var i = 0; i < users.length; i++) {
+                if (users[i]._id.equals(currentUser._id)) {
+                    users.splice(i, 1)
+                }
+            }
+            // Map each user to indicate whether the current user is following that user or not.
+            let mappedFollows = users.map((aUser) => {
                 let userFollows = currentUser.follows.some((followedUser) => {
-                    return followedUser.equals(otherUser._id);
+                    return followedUser.equals(aUser._id);
                 });
-                return Object.assign(otherUser.toObject(), {following: userFollows});
+                return Object.assign(aUser.toObject(), {following: userFollows});
             });
             res.locals.users = mappedFollows;
             next();
