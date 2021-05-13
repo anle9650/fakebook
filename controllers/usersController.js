@@ -86,7 +86,9 @@ module.exports = {
                 let messages = error.array().map( e => e.msg);
                 req.flash("error",messages.join(" and "));
                 req.skip = true;
+                console.log("VALIDATION WAS NOT PASSED!");
                 res.locals.redirect = "/users/new";
+                
                 next();
             }
             else{
@@ -133,9 +135,9 @@ module.exports = {
 
         let userId = req.params.id,
             userParams = getUserParams(req.body);
-
         User.findOneAndUpdate(userId, {
             $set: userParams
+            
         })
             .then(user => {
                 res.locals.user = user;
