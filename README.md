@@ -46,6 +46,30 @@ now to run the application will you want to use `npm start` in the folder. Then 
  ![image](https://user-images.githubusercontent.com/78400904/114970723-33d6bb80-9e38-11eb-91d6-300f3b772b78.png)
 
 
+### Final Project
+#### To install and setup this  version of the application
+First pull or clone the latest version from the repo(see the installation section above). Then make sure that you have the npm package manager(you can use `npm --version` to see).You will also likely want to install mongoDB https://www.mongodb.com/try if you want to see the login/signup functionality. Next you will want to do a `npm install` inside of the cloned folder to automatically install all the needed dependencies for it to work. Ofcourse you can go to the link here https://lit-garden-61381.herokuapp.com/ to see the live version and not worry about setting anything up.
+  
+now to run the application will you want to use `npm start` in the folder. Then the next step is to navigate to `localhost:3000`, here you will need to make a new user account by clicking on the `create an account` button in green. You will need to make an account in this because we could not get the seed file to work properly with passwords. once you have created an account you can go to `localhost:3000/users/login` to login. Once you are logged in you will see the `/home` page, which on the top left shows who is logged in(you can click on it and see your profile), you can click on `edit profile` to edit your profile and `logout` to logout. In the center left of the screen you will see what  users are on the platform and you can click on their names to view their profiles also. Then in the center of the screen you will see the prompt to `create a post` and also posts that have been made will be underneath it. you will be able to see posts from users that you have followed. You can also delete your posts by clicking the dellete button on the post. You can also see a section where there are the trending hashtags from posts, this section displays the top 10 hashtags from posts. on the top left bar you can also access your `notifications` which shows you your notifications from people you follow.
+
+![image](https://user-images.githubusercontent.com/78400904/118104037-db8fcc80-b397-11eb-8aaa-030ab9a55dde.png)
+
+
+#### Design 
+  For the design we implemented crud actions to the application to easily allow users to be created, edited, updated, deleted, etc. We also use cookies,express sessions, passport and flashing to handle user accounts/login/logout. we also added the new ability for users to make posts and for the posts to appear on the home screen. The posts consists essentially of simple schema models,controllers, and some ejs to display it properly. Large part of the functionality comes from mongoose and passport and their interfaces which allows for things such as simple user authentication and interaction with the database and application. We have also added the ability to follow and unfollow people which allows the application to conditionally display posts on your home page based on who you are following. And we have added hashtags from posts to a specific trending section. we also use modals to show you your notifications from people you follow.   
+
+![image](https://user-images.githubusercontent.com/78400904/118104923-fadb2980-b398-11eb-8bf8-c9dcb5535709.png)
+
+
+![image](https://user-images.githubusercontent.com/78400904/118104973-0d556300-b399-11eb-81fb-eae5bcfc98af.png)
+
+
+
+
+
+
+
+
 ## Contributions
 
 The sign-up page and homepage were designed by Andy Le. Server-side validation functions for signup and sign in were designed by Andy Le. The sign-in page was designed by Jacques Steyn.
