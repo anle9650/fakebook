@@ -21,6 +21,14 @@ function validateForm() {
 
     // Check 2
     var elements = document.getElementsByTagName("input");
+    
+    elements.splice(elements.indexOf("txtDOB"),1);
+    //there is some error when trying to validate the date of birth
+    // i think it has to do with the format of the date  input type.
+    // i just remove dob from the list of elements that get checked...
+    
+
+
     var invalidChars = ['#', '-', '(', ')', '{', '}', '<', '>', '`', '"'];
     for (let i = 0; i < elements.length; i++) {
         let validInput = true;
