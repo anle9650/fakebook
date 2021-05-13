@@ -46,7 +46,7 @@ now to run the application will you want to use `npm start` in the folder. Then 
  ![image](https://user-images.githubusercontent.com/78400904/114970723-33d6bb80-9e38-11eb-91d6-300f3b772b78.png)
 
 
-### Final Project
+# Final Project
 #### To install and setup this  version of the application
 First pull or clone the latest version from the repo(see the installation section above). Then make sure that you have the npm package manager(you can use `npm --version` to see).You will also likely want to install mongoDB https://www.mongodb.com/try if you want to see the login/signup functionality. Next you will want to do a `npm install` inside of the cloned folder to automatically install all the needed dependencies for it to work. Ofcourse you can go to the link here https://lit-garden-61381.herokuapp.com/ to see the live version and not worry about setting anything up.
   
