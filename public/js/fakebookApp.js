@@ -104,7 +104,7 @@ let getTrendingHashtags = () => {
         if (!data || !data.hashtags) return;
         data.hashtags.forEach((hashtag) => {
             $(".hashtagsUl").append(
-                `<li>${hashtag.name}</li>`
+                `<li><a href="/hashtags/${hashtag._id}">${hashtag.name}</a></li>`
             )
         });
     });

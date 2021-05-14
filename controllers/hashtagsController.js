@@ -1,4 +1,5 @@
 const Hashtag = require("../models/hashtag"),
+    Post = require("../models/post"),
     httpStatus = require("http-status-codes");
 
 module.exports = {
@@ -38,6 +39,30 @@ module.exports = {
             res.locals.redirect = "/home"
             next();
         }
+    },
+
+    show: (req, res, next) => {
+        let hashtagId= req.params.id;
+        Hashtag.findById(hashtagId)
+        .then(hashtag => {
+            return Hashtag.populate(hashtag, "posts");
+        })
+        .then(hashtag => {
+            res.locals.hashtag = hashtag;
+            return Post.populate(hashtag.posts, "user");
+        })
+        .then(posts => {
+            res.locals.posts = posts;
+            next();
+        })
+        .catch(error => {
+            console.log(`Error fetching hashtag by ID: ${error.message}`);
+            next(error);
+        });
+    },
+
+    showView: (req, res) => {
+        res.render("hashtags/show");
     },
 
     filterTopHashtags: (req, res, next) => {

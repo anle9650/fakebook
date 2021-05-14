@@ -171,7 +171,7 @@ module.exports = {
         let userId = req.params.id;
         User.findByIdAndRemove(userId)
             .then(() => {
-                res.locals.redirect = "/users";// does exist yet
+                res.locals.redirect = "/users";
                 next();
             })
             .catch(error => {
