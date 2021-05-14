@@ -2,7 +2,7 @@
 
 <div class="container">
     <% posts.forEach(post => { %>
-        <a href="<%= `/users/${post.user._id}` %>"><%= post.user.userName %> (<%= post.user.name.first %> <%= post.user.name.last %>)</a>
+        <a href="<%= `/users/${post.user._id}` %>"><%= post.user.userName %>(<%= post.user.name.first %> <%= post.user.name.last %>)</a>
         <div class="border rounded post">
             <p><%= post.content %></p>                           
         </div>
