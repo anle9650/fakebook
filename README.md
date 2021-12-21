@@ -1,6 +1,6 @@
 # fakebook
 
-Fakebook is a social network platform. Users can add friends, direct message other users, and share posts for all of their friends to see. It is designed to be simple, responsive, and visually appealing. It is currently in the early stages of development. This is purely a visual and non-functional demonstration of the application.
+Fakebook is a social network platform. Users can add friends, direct message other users, and share posts for all of their friends to see. It is designed to be simple, responsive, and visually appealing.
 
 ## Installation
 
